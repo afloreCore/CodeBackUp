@@ -1,0 +1,30 @@
+User_id (del vendedor):1473268244
+external_store_id (Local/Store):SOFT001
+external_pos_id (Caja/Brnach)
+https://api.mercadopago.com/instore/qr/seller/collectors/1473268244/stores/SOFT001/pos/SOFT001POS001/orders
+curl -X PUT \
+      'https://api.mercadopago.com/instore/qr/seller/collectors/{user_id}/stores/{external_store_id}/pos/{external_pos_id}/orders' \
+       -H 'Authorization: Bearer YOUR_ACCESS_TOKEN \
+       -H 'Content-Type: application/json' \ 
+      -body {
+	"external_reference": "FB0001-0002",
+	"title":"",
+	"description":"",
+	"total_amount": 20.25,
+	"items": [
+    {
+      "sku_number": "A123K9191938",
+      "category": "marketplace",
+      "title": "Item 1",
+      "description": "Item 1 descrp",
+      "unit_price": 10.25,
+      "quantity": 1,
+      "unit_measure": "unit",
+      "total_amount": 10.25
+    }
+  ],
+  "sponsor": {
+    "id": ????
+  },
+  "cash_out": {"amount":10} 'Retiro de dinero en efectivo
+}'

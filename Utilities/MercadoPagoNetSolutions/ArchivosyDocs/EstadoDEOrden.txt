@@ -1,0 +1,1 @@
+https://api.mercadopago.com/merchant_orders/search?application_id=8182650202833324&sponsor_id=136614767&external_reference=FB0001-1234&site_id=MLA

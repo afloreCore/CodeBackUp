@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+	<TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <EnableComHosting>true</EnableComHosting>
+	  <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+	  <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+	  <EnableNETAnalyzers>False</EnableNETAnalyzers>
+	  <AnalysisLevel>none</AnalysisLevel>
+	  <PlatformTarget>x86</PlatformTarget>
+    <Platforms>x86</Platforms>
+    <Authors>Alejandro Florentin</Authors>
+    <PackageId>WrapperMercadoPagoAPI</PackageId>
+    <Company>Softland Arg.</Company>
+    <AssemblyName>WrapperMercadoPagoAPI</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ConsoleMPagoTest\**" />
+    <EmbeddedResource Remove="ConsoleMPagoTest\**" />
+    <None Remove="ConsoleMPagoTest\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="InterfaceComNetCore">
+      <HintPath>..\InterfaceComNetCore\bin\x86\Debug\InterfaceComNetCore.dll</HintPath>
+    </Reference>
+	<ComHostTypeLibrary Include="..\InterfaceComNetCore\bin\x86\Debug\InterfaceComNetCore.tlb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HubConnectionWrapper\HubConnectionWrapper.csproj" />
+  </ItemGroup>
+
+</Project>

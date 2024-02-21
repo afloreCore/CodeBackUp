@@ -1,0 +1,9 @@
+{
+  "Kestrel": {
+    "Endpoints": {
+      "MyHttpEndpoint": {
+        "Url": "https://localhost:5001"
+      }
+    }
+  }
+}

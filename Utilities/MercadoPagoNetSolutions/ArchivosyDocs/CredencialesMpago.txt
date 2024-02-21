@@ -1,0 +1,84 @@
+
+ngrpk
+token: 2Z7rdMKfGSQWEdmxOVUJfRVm7O9_89XBumgLS3oFKkHhcyL7L
+********************************************************************************************
+cuenta Developer:unla.virtual.2016
+user-.id
+136614767
+Número de aplicación:
+211071455108264
+Token
+APP_USR-211071455108264-101012-101ad9024c8b2e4d49b1aa05c0b17b02-136614767
+
+Cuentas de Prueba Comprador:
+Softland Developer: TESTUSER1571297263, pw:RA6CRXqUvv
+'/********************************************************************************************/
+'											Vendedor: 
+'/********************************************************************************************/
+DEscp: IntegracionVendedor, User:TESTUSER1777949613, pw: O4CMwf3G4W
+User ID: 1506231285
+token Prod: Bearer APP_USR-7467881949049174-101014-8992b07cffadbd3d966b4acb95c328f3-1506231285
+ClienteID: 7467881949049174
+
+'/*************************************ORDEN****************************************/
+{
+    {
+    "id": "1473268244-d83bbbc4-a128-474b-a0bd-663f4853f4b8",
+    "items": [
+        {
+            "id": "",
+            "category_id": "",
+            "title": "Producto sin descripción",
+            "quantity": 2,
+            "currency_id": "ARS",
+            "unit_price": 500,
+            "description": ""
+        },
+        {
+            "id": "",
+            "category_id": "",
+            "title": "Producto sin descripción",
+            "quantity": 1,
+            "currency_id": "ARS",
+            "unit_price": 522.45,
+            "description": ""
+        }
+    ],
+    "collector_id": 1473268244,
+    "collector": {},
+    "total_amount": 1522.45,
+    "amount": 1522.45,
+    "external_reference": "FB0001-1234",
+    "operation_type": "regular_payment",
+    "payment_methods": {
+        "excluded_payment_methods": [],
+        "excluded_payment_types": [
+            {
+                "id": "digital_wallet"
+            },
+            {
+                "id": "ticket"
+            },
+            {
+                "id": "atm"
+            }
+        ]
+    },
+    "marketplace": "NONE",
+    "marketplace_fee": 0,
+    "sponsor_id": 136614767,
+    "back_urls": {
+        "success": "",
+        "pending": "",
+        "failure": ""
+    },
+    "expiration_date_to": "2023-09-13T15:34:29.992-04:00",
+    "expires": true,
+    "additional_info": "",
+    "site_id": "MLA",
+    "client_id": 1683841932641989,
+    "processing_modes": [
+        "aggregator"
+    ],
+    "internal_metadata": {}
+}

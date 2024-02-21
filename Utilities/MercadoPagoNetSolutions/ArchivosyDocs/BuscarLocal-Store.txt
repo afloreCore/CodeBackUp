@@ -1,0 +1,1 @@
+https://api.mercadopago.com/users/1473268244/stores/search?

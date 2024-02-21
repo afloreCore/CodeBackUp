@@ -1,0 +1,56 @@
+{
+    "paging": {
+        "total": 1,
+        "offset": 0,
+        "limit": 50
+    },
+    "results": [
+        {
+            "id": "57391842",
+            "name": "PDV001",
+            "date_creation": "2023-09-08T16:28:25.117Z",
+            "business_hours": {
+                "monday": [
+                    {
+                        "open": "09:00",
+                        "close": "18:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "open": "09:00",
+                        "close": "18:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "open": "09:00",
+                        "close": "18:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "open": "09:00",
+                        "close": "18:00"
+                    }
+                ],
+                "friday": [
+                    {
+                        "open": "09:00",
+                        "close": "18:00"
+                    }
+                ]
+            },
+            "location": {
+                "address_line": "Av. Del Libertador 6343, Belgrano, Capital Federal, Argentina",
+                "reference": "Piso 12, CP(1428)",
+                "latitude": -32.8897322,
+                "longitude": -68.8443275,
+                "id": "AR-M",
+                "type": "state",
+                "city": "Belgrano"
+            },
+            "external_id": "1"
+        }
+    ]
+}

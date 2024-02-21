@@ -1,0 +1,104 @@
+curl -X PUT \
+      'https://api.mercadopago.com/instore/qr/seller/collectors/{user_id}/stores/{external_store_id}/pos/{external_pos_id}/orders' \
+       -H 'Authorization: Bearer YOUR_ACCESS_TOKEN \
+       -H 'Content-Type: application/json' \ 
+      -d '{
+  "external_reference": 12345,
+  "title": "Product order",
+  "total_amount": 100,
+  "items": [
+    {
+      "sku_number": "A123K9191938",
+      "category": "marketplace",
+      "title": "Point Mini",
+      "description": "This is the Point Mini",
+      "unit_price": 100,
+      "quantity": 1,
+      "unit_measure": "unit",
+      "total_amount": 100
+    }
+  ],
+  "cash_out": {}
+}'
+https://api.mercadopago.com/instore/qr/seller/collectors/57039551/stores//pos/{external_pos_id}/orders
+
+'********************************************************************
+{
+  "external_reference": "FB0001-0001-001234",
+  "title": "FB0001-1234",
+  "notification_url": "www.yourserver.com",
+  "total_amount": 100.25,
+  "description":"PDV001",
+  "expiration_date":"2023-09-04T16:34:56.559-04:00",
+  "items": [
+    {
+      "sku_number": "TE0001",
+      "category": "marketplace",
+      "title": "TE-0001",
+      "description": "Producto",
+      "unit_price": 100.25,
+      "quantity": 1,
+      "unit_measure": "unit",
+      "total_amount": 100.25
+    }
+  ],
+  "sponsor": {
+    "id": 57277896
+  },
+  "cash_out": {}
+}
+'*********************************************************************************
+curl -X POST \
+      'https://api.mercadopago.com/merchant_orders' \
+       -H 'Authorization: Bearer TEST-8182650202833324-082815-164cbc5ae5c89f1f86bd1fa2415b0c51-136614767 
+       -H 'Content-Type: application/json' \ 
+      -d '{
+  "external_reference": "FB001-1234",
+  "preference_id": "MPAGO",
+  "payer": {
+    "id": 1,
+    "nickname": "Consumidor Final"
+  },
+  "site_id": "MLA",
+  "items": [
+    {
+      "id": "TE0001",
+      "category_id": "TE",
+      "currency_id": "ARS",
+      "description": "Producto terminado 0001",
+      "picture_url": "",
+      "quantity": 1,
+      "unit_price": 105.1234,
+      "title": "TE0001"
+    }
+  ],
+  "application_id": 8182650202833324
+}
+'*********************************************************************
+https://api.mercadopago.com/instore/qr/seller/collectors/136614767/stores/1/pos/PDV001POS001/orders
+
+{
+	"external_reference": "FB0001-1234",
+  "title": "Product order",
+  "total_amount": 100,
+  "description":"Prueba Orden001",
+  "items": [
+    {
+      "sku_number": "A123K9191938",
+      "category": "marketplace",
+      "title": "Point Mini",
+      "description": "This is the Point Mini",
+      "unit_price": 100,
+      "quantity": 1,
+      "unit_measure": "unit",
+      "total_amount": 100
+    }
+  ],
+  "cash_out": {"amount":0}
+}
+
+'*****************************Obtener***********************
+curl -X GET \
+      'https://api.mercadopago.com/instore/qr/seller/collectors//136614767/stores/1/pos/PDV001POS001/orders
+       -H 'Authorization: Bearer YOUR_ACCESS_TOKEN \
+      

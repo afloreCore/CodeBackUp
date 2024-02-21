@@ -1,0 +1,4 @@
+https://api.mercadopago.com/instore/qr/seller/collectors/{user_id}/pos/{external_pos_id}/orders
+
+GET
+https://api.mercadopago.com/instore/qr/seller/collectors/1473268244/pos/SOFT001POS001/orders

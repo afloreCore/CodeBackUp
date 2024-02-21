@@ -1,0 +1,27 @@
+curl -X POST \
+      'https://api.mercadopago.com/merchant_orders' \
+       -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+       -H 'Content-Type: application/json' \ 
+-d
+{
+    "additional_info":"",
+     "preference_id":"1506231285-3795cc25-00fc-44a8-a20b-3ce94820ba0f", 'creada antes para default
+  "external_reference": "VT-FB0001-0001",
+  "site_id": "MLA",
+  "items": [
+    {
+      "id": "TE-0001",
+      "category_id": "TE",
+      "currency_id": "ARS",
+      "title": "TE-0001",
+      "description": "",
+      "quantity": 1,
+      "unit_price": 5
+    }
+  ],
+  "experite":true,
+   "collector": {
+        "id": 1506231285
+      }
+
+}

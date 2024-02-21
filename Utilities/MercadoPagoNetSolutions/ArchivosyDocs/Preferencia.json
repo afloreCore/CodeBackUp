@@ -1,0 +1,26 @@
+{
+    "marketplace":"NONE",
+    "external_reference":"FB-0001-110347",
+  "items": [
+    {
+        "id":"TE001",
+      "title": "item softland",
+      "description": "",
+      "category_id": "PDV",
+      "quantity": 1,
+      "currency_id": "ARS",
+      "unit_price": 12.53
+    }
+  ],
+  "expirate":true,
+  "payment_methods": {
+    "excluded_payment_methods": [
+      {"id":"maestro"},
+      {"id":"visa"}
+    ],
+    "excluded_payment_types": [
+      {}
+    ],
+    "installments":6
+  }
+}

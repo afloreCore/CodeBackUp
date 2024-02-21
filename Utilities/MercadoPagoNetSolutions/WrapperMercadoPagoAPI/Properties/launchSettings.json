@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WrapperMercadoPagoAPI": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

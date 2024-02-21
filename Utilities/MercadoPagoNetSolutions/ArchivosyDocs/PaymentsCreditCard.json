@@ -1,0 +1,2138 @@
+{
+    "paging": {
+        "limit": 30,
+        "offset": 0,
+        "total": 15
+    },
+    "results": [
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": "301299",
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+                "bin": "50317557",
+                "cardholder": {
+                    "identification": {
+                        "number": "12345678",
+                        "type": "DNI"
+                    },
+                    "name": "APRO"
+                },
+                "date_created": "2023-10-20T13:52:12.000-04:00",
+                "date_last_updated": "2023-10-20T13:52:12.000-04:00",
+                "expiration_month": 11,
+                "expiration_year": 2025,
+                "first_six_digits": "503175",
+                "id": "9269300463",
+                "last_four_digits": "0604"
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 2.26,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T13:52:12.000-04:00",
+                    "id": "65617512516-001",
+                    "last_updated": "2023-10-20T13:52:12.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-20T13:52:13.000-04:00",
+            "date_created": "2023-10-20T13:52:12.000-04:00",
+            "date_last_updated": "2023-10-20T13:52:14.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": {
+                    "authorization_code": "301299",
+                    "buyer_fee": 0,
+                    "connection": "firstdata-ipg",
+                    "date_created": "2023-10-20T13:52:13.000-04:00",
+                    "finance_charge": 0,
+                    "id": "42397162311_737b736e76737b7a7576",
+                    "installments": 1,
+                    "issuer_id": "3",
+                    "merchant": null,
+                    "operation": "purchase",
+                    "options": "[{\"collector_id\":1506231285},{\"payment_operation_type\":\"regular_payment\"},{\"has_wallet_id\":true},{\"regulation\":{\"legal_name\":\"Test Test\",\"address_street\":\"Test Address\",\"address_door_number\":123,\"zip\":\"1414\",\"city\":\"Palermo\",\"country\":\"ARG\",\"document_number\":\"1111111\",\"document_type\":\"DNI\",\"region_code\":\"AR\",\"region_code_iso\":\"AR-C\",\"fiscal_condition\":null,\"mcc\":\"8999\"}},{\"security_code_data\":{\"ads_remove_cvv\":false}}]",
+                    "payment_id": 65617512516,
+                    "profile_id": "g2_firstdata-ipg_firstdata_25204885",
+                    "reference": "{\"merchant_number\":30121999}",
+                    "soft_descriptor": "QR",
+                    "statement_descriptor": "Mercadopago*fake",
+                    "usn": null
+                }
+            },
+            "external_reference": "FB-0001-145116",
+            "fee_details": [
+                {
+                    "amount": 2.26,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65617512516,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "3",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-07T13:52:13.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12667437413",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "data": {
+                    "routing_data": {
+                        "merchant_account_id": "5925204885444"
+                    }
+                },
+                "id": "master",
+                "issuer_id": "3",
+                "type": "credit_card"
+            },
+            "payment_method_id": "master",
+            "payment_type_id": "credit_card",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": "Mercadopago*fake",
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 55,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 55,
+                "net_received_amount": 52.74,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 55
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+                "bin": "45099535",
+                "cardholder": {
+                    "identification": {
+                        "number": "12345678",
+                        "type": "DNI"
+                    },
+                    "name": "APRO"
+                },
+                "date_created": "2023-10-20T13:47:38.000-04:00",
+                "date_last_updated": "2023-10-20T13:47:38.000-04:00",
+                "expiration_month": 11,
+                "expiration_year": 2025,
+                "first_six_digits": "450995",
+                "id": "9269287980",
+                "last_four_digits": "3704"
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T13:47:38.000-04:00",
+                    "id": "65448525389-001",
+                    "last_updated": "2023-10-20T13:47:38.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": null,
+            "date_created": "2023-10-20T13:47:38.000-04:00",
+            "date_last_updated": "2023-10-20T13:47:40.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": {
+                    "authorization_code": null,
+                    "buyer_fee": 0,
+                    "connection": "genova",
+                    "date_created": "2023-10-20T13:47:38.000-04:00",
+                    "finance_charge": 0,
+                    "id": "42398735176_767837736f7f7e713766",
+                    "installments": 1,
+                    "issuer_id": "310",
+                    "merchant": null,
+                    "operation": "authorization",
+                    "options": "[{\"collector_id\":1506231285},{\"payment_operation_type\":\"regular_payment\"},{\"has_wallet_id\":true},{\"regulation\":{\"legal_name\":\"Test Test\",\"address_street\":\"Test Address\",\"address_door_number\":123,\"zip\":\"1414\",\"city\":\"Palermo\",\"country\":\"ARG\",\"document_number\":\"1111111\",\"document_type\":\"DNI\",\"region_code\":\"AR\",\"region_code_iso\":\"AR-C\",\"fiscal_condition\":null,\"mcc\":\"5199\"}},{\"security_code_data\":{\"ads_remove_cvv\":false}}]",
+                    "payment_id": 65448525389,
+                    "profile_id": "g2_genova_genova_1001",
+                    "reference": null,
+                    "soft_descriptor": "QR",
+                    "statement_descriptor": null,
+                    "usn": null
+                }
+            },
+            "external_reference": "FB-0001-144622",
+            "fee_details": [
+            ],
+            "financing_group": null,
+            "id": 65448525389,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "310",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": null,
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12670215536",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "data": {
+                    "routing_data": {
+                        "merchant_account_id": "1001"
+                    }
+                },
+                "id": "visa",
+                "issuer_id": "310",
+                "type": "credit_card"
+            },
+            "payment_method_id": "visa",
+            "payment_type_id": "credit_card",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "rejected",
+            "status_detail": "cc_rejected_max_attempts",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 35,
+                "net_received_amount": 0,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T13:45:36.000-04:00",
+                    "id": "65617035250-001",
+                    "last_updated": "2023-10-20T13:45:36.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-20T13:45:36.000-04:00",
+            "date_created": "2023-10-20T13:45:36.000-04:00",
+            "date_last_updated": "2023-10-20T13:45:38.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-144406",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65617035250,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-07T13:45:36.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12670151322",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+                "bin": "50317557",
+                "cardholder": {
+                    "identification": {
+                        "number": "12345678",
+                        "type": "DNI"
+                    },
+                    "name": "APRO"
+                },
+                "date_created": "2023-10-20T13:45:22.000-04:00",
+                "date_last_updated": "2023-10-20T13:45:22.000-04:00",
+                "expiration_month": 11,
+                "expiration_year": 2025,
+                "first_six_digits": "503175",
+                "id": "9269300463",
+                "last_four_digits": "0604"
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T13:45:22.000-04:00",
+                    "id": "65448435183-001",
+                    "last_updated": "2023-10-20T13:45:22.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": null,
+            "date_created": "2023-10-20T13:45:22.000-04:00",
+            "date_last_updated": "2023-10-20T13:45:24.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": {
+                    "authorization_code": null,
+                    "buyer_fee": 0,
+                    "connection": "firstdata-ipg",
+                    "date_created": "2023-10-20T13:45:22.000-04:00",
+                    "finance_charge": 0,
+                    "id": "42398708918_7e7d73337d7d6e7e7f7a",
+                    "installments": 1,
+                    "issuer_id": "3",
+                    "merchant": null,
+                    "operation": "purchase",
+                    "options": "[{\"collector_id\":1506231285},{\"payment_operation_type\":\"regular_payment\"},{\"has_wallet_id\":true},{\"regulation\":{\"legal_name\":\"Test Test\",\"address_street\":\"Test Address\",\"address_door_number\":123,\"zip\":\"1414\",\"city\":\"Palermo\",\"country\":\"ARG\",\"document_number\":\"1111111\",\"document_type\":\"DNI\",\"region_code\":\"AR\",\"region_code_iso\":\"AR-C\",\"fiscal_condition\":null,\"mcc\":\"8999\"}},{\"security_code_data\":{\"ads_remove_cvv\":false}}]",
+                    "payment_id": 65448435183,
+                    "profile_id": "g2_firstdata-ipg_firstdata_25204885",
+                    "reference": null,
+                    "soft_descriptor": "QR",
+                    "statement_descriptor": null,
+                    "usn": null
+                }
+            },
+            "external_reference": "FB-0001-144406",
+            "fee_details": [
+            ],
+            "financing_group": null,
+            "id": 65448435183,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "3",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": null,
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12670151322",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "data": {
+                    "routing_data": {
+                        "merchant_account_id": "5925204885444"
+                    }
+                },
+                "id": "master",
+                "issuer_id": "3",
+                "type": "credit_card"
+            },
+            "payment_method_id": "master",
+            "payment_type_id": "credit_card",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "rejected",
+            "status_detail": "cc_rejected_max_attempts",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 35,
+                "net_received_amount": 0,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T13:42:20.000-04:00",
+                    "id": "65448269065-001",
+                    "last_updated": "2023-10-20T13:42:20.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-20T13:42:20.000-04:00",
+            "date_created": "2023-10-20T13:42:20.000-04:00",
+            "date_last_updated": "2023-10-20T13:42:22.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-144058",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65448269065,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-07T13:42:20.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12667193715",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T13:38:23.000-04:00",
+                    "id": "65448018087-001",
+                    "last_updated": "2023-10-20T13:38:23.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-20T13:38:24.000-04:00",
+            "date_created": "2023-10-20T13:38:23.000-04:00",
+            "date_last_updated": "2023-10-20T13:38:25.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-143745",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65448018087,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-07T13:38:24.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12669985988",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T11:57:43.000-04:00",
+                    "id": "65610280218-001",
+                    "last_updated": "2023-10-20T11:57:43.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-20T11:57:43.000-04:00",
+            "date_created": "2023-10-20T11:57:43.000-04:00",
+            "date_last_updated": "2023-10-20T11:57:44.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-125704",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65610280218,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-07T11:57:43.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12664149623",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T11:55:22.000-04:00",
+                    "id": "65441630319-001",
+                    "last_updated": "2023-10-20T11:55:22.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-20T11:55:22.000-04:00",
+            "date_created": "2023-10-20T11:55:22.000-04:00",
+            "date_last_updated": "2023-10-20T11:55:23.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-125410",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65441630319,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-07T11:55:22.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12664065449",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 0.5,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-20T11:29:09.000-04:00",
+                    "id": "65439681407-001",
+                    "last_updated": "2023-10-20T11:29:09.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-20T11:29:09.000-04:00",
+            "date_created": "2023-10-20T11:29:09.000-04:00",
+            "date_last_updated": "2023-10-20T11:29:11.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": "Producto sin descripci\u00f3n",
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "test",
+            "fee_details": [
+                {
+                    "amount": 0.5,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65439681407,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-07T11:29:09.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12666055746",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 12.23,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 11.73,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 12.23
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 0.95,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-19T15:02:55.000-04:00",
+                    "id": "65564122632-001",
+                    "last_updated": "2023-10-19T15:02:55.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-19T15:02:55.000-04:00",
+            "date_created": "2023-10-19T15:02:55.000-04:00",
+            "date_last_updated": "2023-10-19T15:02:56.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB0001-0402",
+            "fee_details": [
+                {
+                    "amount": 0.95,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65564122632,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-06T15:02:55.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12645505294",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 23.25,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 22.3,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 23.25
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 0.51,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-19T14:53:46.000-04:00",
+                    "id": "65395371261-001",
+                    "last_updated": "2023-10-19T14:53:46.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-19T14:53:46.000-04:00",
+            "date_created": "2023-10-19T14:53:46.000-04:00",
+            "date_last_updated": "2023-10-19T14:53:48.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB0001-0353",
+            "fee_details": [
+                {
+                    "amount": 0.51,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65395371261,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-06T14:53:46.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12642444145",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 12.52,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 12.01,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 12.52
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-19T14:42:10.000-04:00",
+                    "id": "65394847133-001",
+                    "last_updated": "2023-10-19T14:42:10.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-19T14:42:11.000-04:00",
+            "date_created": "2023-10-19T14:42:10.000-04:00",
+            "date_last_updated": "2023-10-19T14:42:13.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-154141",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65394847133,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-06T14:42:11.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12642176687",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-19T14:25:49.000-04:00",
+                    "id": "65394123949-001",
+                    "last_updated": "2023-10-19T14:25:49.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-19T14:25:49.000-04:00",
+            "date_created": "2023-10-19T14:25:49.000-04:00",
+            "date_last_updated": "2023-10-19T14:25:55.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-152519",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65394123949,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-06T14:25:49.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12641812193",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-19T14:24:43.000-04:00",
+                    "id": "65562150742-001",
+                    "last_updated": "2023-10-19T14:24:43.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-19T14:24:44.000-04:00",
+            "date_created": "2023-10-19T14:24:43.000-04:00",
+            "date_last_updated": "2023-10-19T14:24:44.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-152412",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65562150742,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-06T14:24:44.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12641793093",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        },
+        {
+            "accounts_info": null,
+            "acquirer_reconciliation": [
+            ],
+            "additional_info": {
+                "authentication_code": null,
+                "available_balance": null,
+                "nsu_processadora": null
+            },
+            "authorization_code": null,
+            "binary_mode": true,
+            "brand_id": null,
+            "build_version": "54.20.5-hotfix-2",
+            "call_for_authorize_id": null,
+            "captured": true,
+            "card": {
+            },
+            "charges_details": [
+                {
+                    "accounts": {
+                        "from": "collector",
+                        "to": "mp"
+                    },
+                    "amounts": {
+                        "original": 1.44,
+                        "refunded": 0
+                    },
+                    "client_id": 0,
+                    "date_created": "2023-10-19T13:57:46.000-04:00",
+                    "id": "65392592725-001",
+                    "last_updated": "2023-10-19T13:57:46.000-04:00",
+                    "metadata": {
+                    },
+                    "name": "mercadopago_fee",
+                    "refund_charges": [
+                    ],
+                    "reserve_id": null,
+                    "type": "fee"
+                }
+            ],
+            "collector_id": 1506231285,
+            "corporation_id": null,
+            "counter_currency": null,
+            "coupon_amount": 0,
+            "currency_id": "ARS",
+            "date_approved": "2023-10-19T13:57:46.000-04:00",
+            "date_created": "2023-10-19T13:57:46.000-04:00",
+            "date_last_updated": "2023-10-19T13:57:47.000-04:00",
+            "date_of_expiration": null,
+            "deduction_schema": null,
+            "description": null,
+            "differential_pricing_id": null,
+            "expanded": {
+                "gateway": null
+            },
+            "external_reference": "FB-0001-145619",
+            "fee_details": [
+                {
+                    "amount": 1.44,
+                    "fee_payer": "collector",
+                    "type": "mercadopago_fee"
+                }
+            ],
+            "financing_group": null,
+            "id": 65392592725,
+            "installments": 1,
+            "integrator_id": null,
+            "issuer_id": "2005",
+            "live_mode": true,
+            "marketplace_owner": null,
+            "merchant_account_id": null,
+            "merchant_number": null,
+            "metadata": {
+            },
+            "money_release_date": "2023-11-06T13:57:46.000-04:00",
+            "money_release_schema": null,
+            "money_release_status": "pending",
+            "notification_url": null,
+            "operation_type": "regular_payment",
+            "order": {
+                "id": "12641164989",
+                "type": "mercadopago"
+            },
+            "payer": {
+                "id": "1463945288"
+            },
+            "payment_method": {
+                "id": "account_money",
+                "issuer_id": "2005",
+                "type": "account_money"
+            },
+            "payment_method_id": "account_money",
+            "payment_type_id": "account_money",
+            "platform_id": null,
+            "point_of_interaction": {
+                "business_info": {
+                    "sub_unit": "qr",
+                    "unit": "wallet"
+                },
+                "location": {
+                    "source": "store",
+                    "state_id": "AR-C"
+                },
+                "transaction_data": {
+                    "e2e_id": null
+                },
+                "type": "INSTORE"
+            },
+            "pos_id": "87219375",
+            "processing_mode": "aggregator",
+            "refunds": [
+            ],
+            "shipping_amount": 0,
+            "shipping_cost": 0,
+            "sponsor_id": null,
+            "statement_descriptor": null,
+            "status": "approved",
+            "status_detail": "accredited",
+            "store_id": "57663869",
+            "tags": null,
+            "taxes_amount": 0,
+            "transaction_amount": 35,
+            "transaction_amount_refunded": 0,
+            "transaction_details": {
+                "acquirer_reference": null,
+                "external_resource_url": null,
+                "financial_institution": null,
+                "installment_amount": 0,
+                "net_received_amount": 33.56,
+                "overpaid_amount": 0,
+                "payable_deferral_period": null,
+                "payment_method_reference_id": null,
+                "total_paid_amount": 35
+            }
+        }
+    ]
+}

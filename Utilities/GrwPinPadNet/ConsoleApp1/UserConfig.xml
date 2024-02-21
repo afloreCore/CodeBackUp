@@ -1,0 +1,11 @@
+<?xml version='1.0'?>
+<!-- This file represents a fragment of a book store inventory database -->
+<root>
+  <clisitefconfig>
+    <IP>52.67.141.229</IP>
+    <CUIT>30646941136</CUIT>
+	<CUITISV>30646941136</CUITISV>
+	<TERMINAL_ID>SE000001</TERMINAL_ID>
+	<COMERCIO_ID>00000004</COMERCIO_ID>
+  </clisitefconfig>
+</root>
