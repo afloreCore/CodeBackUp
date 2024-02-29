@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
 using WrapperMercadoPagoAPI.Model;
-using WrapperMercadoPagoAPI.General;
-using System.Security.Cryptography.X509Certificates;
-using System.Runtime.InteropServices;
-using System;
 
 namespace WrapperMercadoPagoAPI.Service;
-public class SucursalService: IDisposable
+public class SucursalService : IDisposable
 {
     private ConfigurationService? _configurationService;
     private HttpClient? _httpClient = null!;
@@ -44,7 +40,7 @@ public class SucursalService: IDisposable
         {
             return null;
         }
-        return null; 
+        return null;
     }
     public async Task<SucursalRequest?> UpdateSucurs(long id, Sucursal sucursal, bool jsonSettings = false)
     {
@@ -62,7 +58,7 @@ public class SucursalService: IDisposable
             var listSuc = await _configurationService.GetAsync<Sucursales>(uri);
             return listSuc!.results!.FirstOrDefault(x => x.name == name);
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             ErrorManager.SetErrorMesage(ex.Message, _configurationService!.FullNameMetod);
             return null;

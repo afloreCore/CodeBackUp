@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WrapperMercadoPagoAPI.Enum;
+﻿namespace WrapperMercadoPagoAPI.Enum;
 /*
  Es el tipo de método de pago (tarjeta, transferencia bancaria, ticket, ATM, etc.). Puede ser de los siguientes tipos.
 account_money: Money in the Mercado Pago account.

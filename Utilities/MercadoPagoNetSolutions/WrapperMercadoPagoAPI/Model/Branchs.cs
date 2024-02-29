@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WrapperMercadoPagoAPI.Model;
+﻿namespace WrapperMercadoPagoAPI.Model;
 public class Branchs
 {
     public Paging paging { get; set; } = null!;

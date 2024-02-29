@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Net.Http;
 using System.Text;
 using WrapperMercadoPagoAPI.General;
 using WrapperMercadoPagoAPI.Model;
-using static System.Net.WebRequestMethods;
 
 namespace WrapperMercadoPagoAPI.Service;
-public class BranchService:IDisposable
+public class BranchService : IDisposable
 {
     private readonly ConfigurationService _configurationService;
     private bool _disposedValue;
@@ -22,16 +19,16 @@ public class BranchService:IDisposable
         var uri = @"https://api.mercadopago.com/pos";
         return await _configurationService.PostAsync<Branch, BranchRequest>(br, uri, jsonSettings);
     }
-    public async Task<Branchs?>GetBranch(Branch br, bool nullValue = true)
+    public async Task<Branchs?> GetBranch(Branch br, bool nullValue = true)
     {
-        if(br == null)
+        if (br == null)
             return null;
 
         StringBuilder _uri = new StringBuilder().Append("pos");
-        var strQuery = Utilities.MakeUriParameters(br, nullValue); 
+        var strQuery = Utilities.MakeUriParameters(br, nullValue);
         if (strQuery.Length > 0)
             _uri.Append('?').Append(strQuery);
-        
+
         return await _configurationService.GetAsync<Branchs>(_uri.ToString());
     }
     public async Task<BranchRequest?> UpdateBranch(long id, Branch br)

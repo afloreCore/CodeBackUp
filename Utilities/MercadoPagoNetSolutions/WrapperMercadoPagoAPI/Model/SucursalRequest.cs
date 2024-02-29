@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace WrapperMercadoPagoAPI.Model;
+﻿namespace WrapperMercadoPagoAPI.Model;
 public class SucursalRequest
 {
 

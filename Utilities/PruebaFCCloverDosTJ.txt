@@ -1,0 +1,42 @@
+
+Dim oRef1053590
+Dim oRef3021364
+
+Set oRef1053590 = ScriptingManager.GetNewObject("FCRMVH",4)
+oRef1053590.Tables("FCPPEN01").Rows("1").Fields("VIRT_CIRCOM").Value="0465"
+oRef1053590.Tables("FCPPEN01").Rows("1").Fields("VIRT_CIRAPL").Value="0465"
+oRef1053590.MoveNext
+Set oRef3021364=oRef1053590.NextObject
+oRef3021364.Tables("FCRMVH").Rows("1").Fields("FCRMVH_NROCTA").Value="     0"
+oRef3021364.Tables("FCRMVH").Rows("1").Fields("FCRMVH_FCHMOV").Value="20210226"
+oRef3021364.Tables("FCRMVH").Rows("1").Fields("FCRMVH_NRODOC").value="30646941136"
+oRef3021364.Tables("FCRMVH").Rows("1").Fields("FCRMVH_TRACOD").value="01"
+oRef3021364.Tables("FCRMVH").Rows("1").Fields("FCRMVH_CAMION").value="01"
+oRef3021364.Tables("FCRMVH").Rows("1").Fields("FCRMVH_TIPEXP").value="4"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI").Rows("1").Fields("FCRMVI_TIPORI").Value="te"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI").Rows("1").Fields("FCRMVI_ARTORI").Value="0001"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI").Rows("1").Fields("FCRMVI_CANTID").Value="1"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("4").Fields("CJRMVI_IMPING").Value="500"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("4").Fields("CJRMVI_CUOTAS").Value="1"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("4").Fields("CJRMVI_PAGADO").Value="S"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("5").Fields("CJRMVI_TIPCPT").Value="T"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("5").Fields("CJRMVI_CODCPT").Value="T02002"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("5").Fields("CJRMVI_CUOTAS").Value="1"
+oRef3021364.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("5").Fields("CJRMVI_PAGADO").Value="S"
+
+'NC
+
+Dim oRef3351870
+Dim oRef8524906
+
+Set oRef3351870 = ScriptingManager.GetNewObject("FCRMVH",4)
+oRef3351870.Tables("FCPPEN01").Rows("1").Fields("VIRT_CIRCOM").Value="0550"
+oRef3351870.Tables("FCPPEN01").Rows("1").Fields("VIRT_CIRAPL").Value="0465"
+oRef3351870.MoveNext
+oRef3351870.Tables("FCPPEN02").Rows("1").Fields("VIRT_CTADES").Value="     0"
+oRef3351870.Tables("FCPPEN02").Rows("1").Fields("VIRT_CTAHAS").Value="     0"
+oRef3351870.MoveNext
+oRef3351870.Tables("FC_TPEN_GRP").Rows("6").Fields("CWA_INT_SEL").Value="S"
+oRef3351870.Finish
+Set oRef8524906=oRef3351870.NextObject
+'oRef8524906.Tables("FCRMVH").Rows("1").Tables("FCRMVI09").Rows("7").Fields("CJRMVI_PAGADO").Value="S"

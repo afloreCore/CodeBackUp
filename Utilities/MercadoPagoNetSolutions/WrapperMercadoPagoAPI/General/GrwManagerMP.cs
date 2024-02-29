@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using WrapperMercadoPagoAPI.Enum;
 using WrapperMercadoPagoAPI.Interface;
 using WrapperMercadoPagoAPI.Model;
 using WrapperMercadoPagoAPI.Service;
-using WrapperMercadoPagoAPI.MarshalModel;
 
 namespace WrapperMercadoPagoAPI.General;
 //[ComVisible(true), Guid(ContractGuids.GuidGrwManagerMP), ProgId("WrapperMercadoPagoAPI.GrwManagerMP")]
@@ -249,7 +245,7 @@ public class GrwManagerMP : IGrwManagerMP, IDisposable
         using PaymentService os = new();
         var result = Task.Run(() => os.GetPayments(null, null, storeID, posID, externalReference).Result);
         var listPayment = result.GetAwaiter().GetResult();
-        if(listPayment != null)
+        if (listPayment != null)
             return listPayment!.results.FirstOrDefault();
         return default;
     }

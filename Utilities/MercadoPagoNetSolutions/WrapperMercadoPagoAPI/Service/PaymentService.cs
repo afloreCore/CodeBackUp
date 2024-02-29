@@ -1,35 +1,24 @@
-﻿using Microsoft.VisualBasic;
-using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using WrapperMercadoPagoAPI.Enum;
-using WrapperMercadoPagoAPI.General;
+﻿using WrapperMercadoPagoAPI.General;
 using WrapperMercadoPagoAPI.Model;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace WrapperMercadoPagoAPI.Service;
-public class PaymentService:IDisposable
+public class PaymentService : IDisposable
 {
     private bool _disposedValue;
     private readonly ConfigurationService _configurationService;
 
     public PaymentService()
     {
-        _configurationService = new ConfigurationService(); 
+        _configurationService = new ConfigurationService();
     }
 
-    public async Task<PaymentRequest?>GetPaymentFromId(string id)
+    public async Task<PaymentRequest?> GetPaymentFromId(string id)
     {
         var uri = $"v1/payments/{id}";
         return await _configurationService.GetAsync<PaymentRequest>(uri);
     }
     public async Task<Payments?> GetPayments(DateTime? beginDate, DateTime? endDate, string storeID = "", string posID = "", string externalReference = "")
-    { 
+    {
         string dateParameters = string.Empty;
         string statusParameters = string.Empty;
         if (beginDate.HasValue)
@@ -41,9 +30,9 @@ public class PaymentService:IDisposable
         else
             statusParameters = "&status=approved";
 
-            //https://api.mercadopago.com/v1/payments/search?sort=date_created&criteria=desc&external_reference=FB0001-0003&range=date_created&begin_date=NOW-30DAYS&end_date=NOW&store_id=57663869&pos_id=87219375
-            var uri = $"v1/payments/search?" + dateParameters + (storeID.Length == 0 ? string.Empty : $"&store_id={storeID}")  + (posID.Length == 0? string.Empty : $"&pos_id={posID}") 
-            + (externalReference.Length == 0? string.Empty : $"&external_reference={externalReference}") + (statusParameters.Length == 0 ? string.Empty : statusParameters) ;
+        //https://api.mercadopago.com/v1/payments/search?sort=date_created&criteria=desc&external_reference=FB0001-0003&range=date_created&begin_date=NOW-30DAYS&end_date=NOW&store_id=57663869&pos_id=87219375
+        var uri = $"v1/payments/search?" + dateParameters + (storeID.Length == 0 ? string.Empty : $"&store_id={storeID}") + (posID.Length == 0 ? string.Empty : $"&pos_id={posID}")
+        + (externalReference.Length == 0 ? string.Empty : $"&external_reference={externalReference}") + (statusParameters.Length == 0 ? string.Empty : statusParameters);
 
         return await _configurationService.GetAsync<Payments>(uri);
     }
@@ -54,7 +43,7 @@ public class PaymentService:IDisposable
         //sort=date_created&criteria=desc : Ordenado de mayor fecha a menor
         var uri = $"v1/payments/search?sort=date_created&criteria=desc&store_id={storeID}&pos_id={posID}&external_reference={externalReference}"
             + (paystatus != PaymentStatus.None ? $"&status={System.Enum.GetName(typeof(PaymentStatus), paystatus)}" : string.Empty);
-       return await _configurationService.GetAsync<Payments>(uri, token);
+        return await _configurationService.GetAsync<Payments>(uri, token);
     }
     public void Dispose()
     {
@@ -74,4 +63,4 @@ public class PaymentService:IDisposable
         }
     }
 
-}   
+}

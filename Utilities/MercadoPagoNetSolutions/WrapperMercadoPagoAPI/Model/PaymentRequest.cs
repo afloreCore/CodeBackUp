@@ -1,5 +1,4 @@
-﻿using WrapperMercadoPagoAPI.Enum;
-namespace WrapperMercadoPagoAPI.Model;
+﻿namespace WrapperMercadoPagoAPI.Model;
 public class PaymentRequest
 {
     public class Accounts

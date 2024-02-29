@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using WrapperMercadoPagoAPI.MarshalModel;
-using WrapperMercadoPagoAPI.Enum;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace WrapperMercadoPagoAPI.MarshalModel;
 [ComVisible(true), Guid("83FE1581-A601-4EF4-8897-7B5D9BAE9C21"), ClassInterface(ClassInterfaceType.AutoDispatch), ProgId("BranchRequestMarshal")]

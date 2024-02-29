@@ -1,15 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Net.Http;
 using System.Net.Http.Headers;
 //using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
-using System.Text.Json;
-using System.Threading;
 using WrapperMercadoPagoAPI.Model;
 
 namespace WrapperMercadoPagoAPI.Service;
-public class ConfigurationService:IDisposable
+public class ConfigurationService : IDisposable
 {
     public static string baseUri => "https://api.mercadopago.com";
     public readonly string user_Id = ParameterService.UserId; //"1506231285";
@@ -29,7 +25,7 @@ public class ConfigurationService:IDisposable
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore
         };
-        methodFullName = System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType!.FullName!.ToString() ?? string.Empty;    
+        methodFullName = System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType!.FullName!.ToString() ?? string.Empty;
     }
     public string FullNameMetod => methodFullName;
     public HttpClient HttpClient()
@@ -60,10 +56,10 @@ public class ConfigurationService:IDisposable
             else
                 SetMessageFromRsponse(response.Content.ReadAsStringAsync().Result);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             ErrorManager.SetErrorMesage(ex.Message, FullNameMetod);
-            return default; 
+            return default;
         }
 
         return default;
@@ -86,10 +82,10 @@ public class ConfigurationService:IDisposable
                 }
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             ErrorManager.SetErrorMesage(ex.Message, methodFullName);
-            return default; 
+            return default;
         }
         return default;
     }
@@ -107,9 +103,9 @@ public class ConfigurationService:IDisposable
                     res = await response.Content.ReadAsStringAsync();
                 }
             }
-            catch 
+            catch
             {
-               return default; 
+                return default;
             }
         }
         if (res != null)
@@ -137,8 +133,8 @@ public class ConfigurationService:IDisposable
             var serialize = JsonConvert.SerializeObject(obj, (jsonSettings ?? jsonSettings));
             var content = new StringContent(serialize, Encoding.UTF8);
             using HttpResponseMessage response = await oClient.PutAsync(uri, content);
-            bool  request = response.IsSuccessStatusCode;
-            if (!request) 
+            bool request = response.IsSuccessStatusCode;
+            if (!request)
             {
                 SetMessageFromRsponse(response.Content.ReadAsStringAsync().Result);
             }
@@ -147,11 +143,11 @@ public class ConfigurationService:IDisposable
         catch
         { return false; }
     }
-    public async Task<T?>PutAsync<T, U>(U objSerialize,string uri, bool jsonSettings = false)
+    public async Task<T?> PutAsync<T, U>(U objSerialize, string uri, bool jsonSettings = false)
     {
         try
         {
-            var serialize = JsonConvert.SerializeObject(objSerialize, (jsonSettings? oJsonSettings : null));
+            var serialize = JsonConvert.SerializeObject(objSerialize, (jsonSettings ? oJsonSettings : null));
             var content = new StringContent(serialize, Encoding.UTF8);
             using HttpResponseMessage response = await oClient.PutAsync(uri, content);
             if (response.IsSuccessStatusCode)
@@ -168,10 +164,10 @@ public class ConfigurationService:IDisposable
                 SetMessageFromRsponse(response.Content.ReadAsStringAsync().Result);
             }
         }
-        catch(Exception ex) 
+        catch (Exception ex)
         {
             ErrorManager.SetErrorMesage(ex.Message, methodFullName);
-            return default; 
+            return default;
         }
         return default;
     }
@@ -218,9 +214,9 @@ public class ConfigurationService:IDisposable
             {
                 BasicListResponse basicListResponse = new BasicListResponse()
                 {
-                     messsage = exc.Message,
-                     status = 400
-                };                      
+                    messsage = exc.Message,
+                    status = 400
+                };
                 SetMessageFromRsponse(basicListResponse.ToString());
 
             }

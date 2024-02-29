@@ -1,8 +1,7 @@
-﻿using System.ComponentModel;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace WrapperMercadoPagoAPI.Model;
-internal class BasicListResponse: IAsyncDisposable
+internal class BasicListResponse : IAsyncDisposable
 {
 
     [JsonPropertyName("error")]

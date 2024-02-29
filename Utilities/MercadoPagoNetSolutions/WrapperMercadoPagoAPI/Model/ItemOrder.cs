@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WrapperMercadoPagoAPI.General;
 
 namespace WrapperMercadoPagoAPI.Model;
 public class ItemOrder

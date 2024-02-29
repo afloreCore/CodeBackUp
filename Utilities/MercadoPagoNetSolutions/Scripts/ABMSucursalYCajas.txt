@@ -1,0 +1,13 @@
+
+Dim oRef591390
+
+Set oRef591390 = ScriptingManager.GetNewObject("GRTMPH",4)
+oRef591390.Tables("GRTMPH").Rows("1").Fields("GRTMPH_USERMP").Value="1506231285"
+oRef591390.Tables("GRTMPH").Rows("1").Fields("GRTMPH_BTOKEN").Value="APP_USR-7467881949049174-101014-8992b07cffadbd3d966b4acb95c328f3-1506231285"
+oRef591390.Tables("GRTMPH").Rows("1").Fields("GRTMPH_STNAME").Value="SUCURS001"
+oRef591390.Tables("GRTMPH").Rows("1").Fields("VIRT_SINCRO").Value="S"
+oRef591390.Tables("GRTMPH").Rows("1").Tables("GRTMPI").Rows("1").Fields("GRTMPI_TIMOUT").Value="70"
+oRef591390.Tables("GRTMPH").Rows("1").Tables("GRTMPI").Rows("2").Fields("GRTMPI_TIMOUT").Value="70"
+oRef591390.Tables("GRTMPH").Rows("1").Tables("GRTMPI").Rows("3").Fields("GRTMPI_TIMOUT").Value="70"
+oRef591390.Tables("GRTMPH").Rows("1").Fields("GRTMPH_EPOINT").Value="https://www.serviidor.com"
+oRef591390.SaveAndClose

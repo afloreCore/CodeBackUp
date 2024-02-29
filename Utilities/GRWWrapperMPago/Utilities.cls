@@ -25,6 +25,7 @@ Private Const sSlpAsientoCjD As String = "FCRMVI08"    'Solapa Bebe de tesoreria
 Private Const sSlpAsientoCjH As String = "FCRMVI09"   'Solapa Haber de tesoreria FCRMVI09
 Private Const FIELD_STORE As String = "CJRMVI_STORID"
 Private Const FIELD_BRANCH As String = "CJRMVI_BRANID"
+Private Const ROUT_CONTROLLER As String = "api/notification"
 Private Const SEPARATOR As String = "|"
 Private m_CompanyName As String
 Private m_Sucurs As String
@@ -150,12 +151,12 @@ Private Function ValidatePAGADO(Who As cwTManBZ.ObjectInstance, oRow As cwTManBZ
                 If Not oInternal Is Nothing Then '#3
                     'public bool Initialize(string HttpsHost, string queryParameters = "")
                     'queryParameters: Debe ir la clave clientId=(identificador para esta caja). Puede ser en BRANID que es único
-                    result = oMPCallback.Initialize(oInternal.EndPoint, "clientId=" & CStr(m_ConfigMP.BranID))
+                    result = oMPCallback.Initialize(oInternal.EndPoint & "/" & ROUT_CONTROLLER, "clientId=" & CStr(m_ConfigMP.BranID))
                     If result Then '#4
                         With oInternal
                             'Set endpoint para el body de la orden, ya que debe enviar el id de la caja para que SignalR lo pueda direccionar a cada cliente
                             'https://{publicUrl}/api/notification?clientId=xxxxxxx
-                            notificationUrl = oInternal.EndPoint & "?clientId=" & CStr(m_ConfigMP.BranID)
+                            notificationUrl = oInternal.EndPoint & "/" & ROUT_CONTROLLER & "?clientId=" & CStr(m_ConfigMP.BranID)
                             Set oBranch = .Branchs.Item(m_ConfigMP.BranID)
                             TimeOut = IIf(oBranch.TimeOut < TIMEOUT_ORDER, TIMEOUT_ORDER, oBranch.TimeOut)
                             FchMov = DateAdd("s", TimeOut, Now)

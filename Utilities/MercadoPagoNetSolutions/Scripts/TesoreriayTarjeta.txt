@@ -1,0 +1,34 @@
+
+Dim oRef4461760
+dim oRef2368022
+
+set oRef2368022 = ScriptingManager.GetOpenObject("CJTCTA",4,"T01001")
+oRef2368022.SaveAs
+oRef2368022.Tables("CJTCTA").Rows("1").Fields("CJTCTA_CTACTE").Value="T02002"
+oRef2368022.Tables("CJTCTA").Rows("1").Fields("CJTCTA_DESCRP").Value="Tarjeta Visa"
+oRef2368022.Tables("CJTCTA").Rows("1").Fields("CJTCTA_BILLET").Value="MP"
+oRef2368022.SaveAndClose
+
+oRef2630132 = = ScriptingManager.GetOpenObject("VTTCIH",4, "01")
+oRef2630132.EnterEditMode
+oRef2630132.Tables("VTTCIH").Rows("1").Tables("VTTCIC").Rows("1").Fields("VTTCIC_HABILI").Value="S"
+oRef2630132.Tables("VTTCIH").Rows("1").Tables("VTTCIC").Rows("1").Fields("VTTCIC_TASINT").Value="1"
+oRef2630132.Tables("VTTCIH").Rows("1").Fields("VTTCIH_CTACTE").Value="T02002"
+oRef2630132.Tables("VTTCIH").Rows("1").Fields("VTTCIH_INTMIN").Value="1"
+oRef2630132.SaveAndClose
+
+Set oRef4461760 = ScriptingManager.GetOpenObject("CJCCOH",4,"T#T02001#CJ")
+oRef4461760.SaveAs
+oRef4461760.Tables("CJCCOH").Rows("1").Fields("GRCCOH_CODCPT").Value="T02002"
+oRef4461760.Tables("CJCCOH").Rows("1").Fields("GRCCOH_DESCRP").Value="TarjetaVisa"
+oRef4461760.Tables("CJCCOH").Rows("1").Fields("GRCCOH_CJCTACTE").Value="T02002"
+oRef4461760.SaveAndClose
+
+dim oRef5115370
+oRef5115370 = ScriptingManager.GetOpenObject("CJCCBH",4,"FA0010#CJ")
+oRef5115370.EnterEditMode
+oRef5115370.Tables("CJCCBH").Rows("1").Tables("CJCCBI").Rows("1").Fields("GRCCBI_TIPCPT").Value="T"
+oRef5115370.Tables("CJCCBH").Rows("1").Tables("CJCCBI").Rows("1").Fields("GRCCBI_CODCPT").Value="T02002"
+oRef5115370.Tables("CJCCBH").Rows("1").Tables("CJCCBI").Rows("1").Fields("GRCCBI_EDITXT").Value="S"
+oRef5115370.SaveAndClose
+

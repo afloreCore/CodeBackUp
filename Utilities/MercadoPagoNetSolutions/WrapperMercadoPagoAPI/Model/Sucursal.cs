@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace WrapperMercadoPagoAPI.Model;
 public class Sucursal
 {
-    public Sucursal() 
+    public Sucursal()
     {
     }
     [DefaultValue(0)]

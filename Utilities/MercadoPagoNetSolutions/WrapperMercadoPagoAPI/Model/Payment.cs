@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WrapperMercadoPagoAPI.Model;
+﻿namespace WrapperMercadoPagoAPI.Model;
 public class AdditionalInfo
 {
 }
@@ -38,7 +32,7 @@ public class Payment
     public DateTime date_approved { get; set; }
     public DateTime date_last_updated { get; set; }
     public DateTime money_release_date { get; set; }
-    public string payment_method_id { get; set; } = string.Empty;   
+    public string payment_method_id { get; set; } = string.Empty;
     public string payment_type_id { get; set; } = string.Empty;
     public string status { get; set; } = string.Empty;
     public string status_detail { get; set; } = string.Empty;
@@ -51,7 +45,7 @@ public class Payment
     public int transaction_amount { get; set; }
     public int transaction_amount_refunded { get; set; }
     public int coupon_amount { get; set; }
-    public TransactionDetails transaction_details { get; set; } = null !;
+    public TransactionDetails transaction_details { get; set; } = null!;
     public int installments { get; set; }
     public Card card { get; set; } = null!;
 }

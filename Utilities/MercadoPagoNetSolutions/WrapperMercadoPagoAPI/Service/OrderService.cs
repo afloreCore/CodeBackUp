@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System.Runtime.Serialization;
-using WrapperMercadoPagoAPI.General;
 using WrapperMercadoPagoAPI.Model;
 
 namespace WrapperMercadoPagoAPI.Service;
-internal class OrderService: IDisposable
+internal class OrderService : IDisposable
 {
     private bool _disposedValue;
     private readonly ConfigurationService _configurationService;

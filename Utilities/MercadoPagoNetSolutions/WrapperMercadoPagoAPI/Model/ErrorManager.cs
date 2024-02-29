@@ -7,6 +7,6 @@ internal static class ErrorManager
         (desc, source) = (descpError, sourceError);
     }
     public static string? MessageDescp => desc;
-    public static string? MessageSource => source; 
+    public static string? MessageSource => source;
 
 }

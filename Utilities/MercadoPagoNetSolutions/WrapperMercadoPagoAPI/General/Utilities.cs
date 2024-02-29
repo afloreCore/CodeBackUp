@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Web;
 using System.Globalization;
+using System.Security.Cryptography;
+using System.Web;
 
 namespace WrapperMercadoPagoAPI.General;
 public static class Utilities
@@ -61,13 +60,13 @@ public static class Utilities
     public static DateTime GetDateTimeFromISO8601(string date)
     {
         DateTime.TryParseExact(date, formatISO8601, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out DateTime datetime);
-        return datetime;    
+        return datetime;
     }
     public static T CastEnum<T>(string name)
     {
         return (T)System.Enum.Parse(typeof(T), name);
     }
-  /*******************************************************************************************************/
+    /*******************************************************************************************************/
     public static string EncryptStringToBase64String(string plainText, byte[] Key)
     {
         // Check arguments. 
@@ -75,7 +74,7 @@ public static class Utilities
             throw new ArgumentNullException("Key");
         byte[] returnValue;
         using var aes = Aes.Create();
-        
+
         aes.KeySize = KeySize;
         aes.GenerateIV();
         aes.Mode = CipherMode.CBC;
@@ -88,9 +87,9 @@ public static class Utilities
         using MemoryStream msEncrypt = new MemoryStream();
         using CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
         using StreamWriter swEncrypt = new StreamWriter(csEncrypt);
-                   
+
         //Write all data to the stream.
-        swEncrypt.Write(plainText);   
+        swEncrypt.Write(plainText);
         // this is just our encrypted data
         var encrypted = msEncrypt.ToArray();
         returnValue = new byte[encrypted.Length + iv.Length];
@@ -98,7 +97,7 @@ public static class Utilities
         Array.Copy(iv, returnValue, iv.Length);
         // append our encrypted data
         Array.Copy(encrypted, 0, returnValue, iv.Length, encrypted.Length);
-        
+
         // return encrypted bytes converted to Base64String
         return Convert.ToBase64String(returnValue);
     }
@@ -154,7 +153,7 @@ public static class Utilities
         // Check arguments. 
         if (string.IsNullOrEmpty(cipherText))
             return string.Empty;
-        byte[]Key = Convert.FromBase64String(strKey);
+        byte[] Key = Convert.FromBase64String(strKey);
         if (Key == null || Key.Length <= 0)
             throw new ArgumentNullException("Key");
 

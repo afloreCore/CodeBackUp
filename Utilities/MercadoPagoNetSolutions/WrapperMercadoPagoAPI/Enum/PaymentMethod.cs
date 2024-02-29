@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WrapperMercadoPagoAPI.Enum;
+﻿namespace WrapperMercadoPagoAPI.Enum;
 /*
  payment_method_id String
 Identificador del medio de pago. Indica el ID del medio de pago seleccionado para realizar el pago.

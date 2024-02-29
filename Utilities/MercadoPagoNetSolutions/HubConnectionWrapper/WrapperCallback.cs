@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http.Connections;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
 using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using System.Threading.Tasks;
 
 
 namespace HubConnectionWrapper
@@ -13,7 +12,7 @@ namespace HubConnectionWrapper
         protected HubConnection connection = null!;
         public delegate bool CallbackReturn(string operation, string operationId);
         public event CallbackReturn CallbackEvent = null!;
-        
+
         //public async Task<bool>SendMessage(string? topic, string? operationID)
         public bool StartConnection(string httpsHost, string queryParameters = "")
         {
@@ -52,7 +51,7 @@ namespace HubConnectionWrapper
                 Debug.Print("Connected");
                 return true;
             }
-            catch(HubException ex)
+            catch (HubException)
             {
                 return false;
             }

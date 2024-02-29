@@ -1,7 +1,8 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
-Reference=*\G{022E509A-2BA6-40DC-A433-997575FF5D38}#4.6#0#..\..\InterfaceComNetCore\bin\x86\DebuC:\VM\Utilities\Interface#InterfaceComNetCore
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
 Object={F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0; COMDLG32.OCX
+Reference=*\G{950F46C8-4430-491D-A207-11EFAD737FD7}#4.5#0#..\..\..\..\..\CompilationZone\GrwPinPadNet.tlb#GrwPinPadNet. Interface para interactuar con los PinPad: Posnet y Clover
+Reference=*\G{022E509A-2BA6-40DC-A433-997575FF5D38}#4.6#0#..\..\..\..\..\CompilationZone\MPago\InterfaceComNetCore.tlb#InterfaceComNetCore
 Form=Form1.frm
 IconForm="Form1"
 Startup="Form1"

@@ -1,12 +1,6 @@
 ﻿using InterfaceComNetCore;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Xml.Linq;
-using WrapperMercadoPagoAPI.Enum;
 using WrapperMercadoPagoAPI.Interface;
 using WrapperMercadoPagoAPI.MarshalModel;
 using WrapperMercadoPagoAPI.Model;
@@ -402,7 +396,7 @@ public class WrapperMPMarshal : IWrapperMarshal
 
     bool IWrapperMarshal.CancelOrder(string externalPosID)
     {
-        using OrderService os = new();  
+        using OrderService os = new();
         var result = Task.Run(() => os.CancelOrder(externalPosID).Result);
         return result.GetAwaiter().GetResult();
     }
@@ -437,7 +431,7 @@ public class WrapperMPMarshal : IWrapperMarshal
     PaymentRequestMarshal? IWrapperMarshal.GetPaymentFromId(string paymentId)
     {
         using PaymentService os = new();
-        var result = Task.Run(() => os.GetPaymentFromId(paymentId).Result).GetAwaiter().GetResult(); 
+        var result = Task.Run(() => os.GetPaymentFromId(paymentId).Result).GetAwaiter().GetResult();
         return CastPaymentToMarshal(result);
     }
     PaymentRequestMarshal? IWrapperMarshal.GetAndWaitPayment(string storeID, string posID, string externalReference, long timeout, PaymentStatus paystatus)
@@ -445,10 +439,10 @@ public class WrapperMPMarshal : IWrapperMarshal
         PaymentRequest? pay = null!;
         PaymentStatus paymentStatus = PaymentStatus.None;
         //multiplico x 1000 xq CancelationToken recibe milisegundos
-        var cancellationTokenSource = new CancellationTokenSource((int)timeout*1000);
+        var cancellationTokenSource = new CancellationTokenSource((int)timeout * 1000);
         CancellationToken token = cancellationTokenSource.Token;
         using ConfigurationService os = new();
-        using PaymentService ps = new();    
+        using PaymentService ps = new();
         while (!token.IsCancellationRequested && paymentStatus != PaymentStatus.approved)
         {
             try
@@ -465,10 +459,10 @@ public class WrapperMPMarshal : IWrapperMarshal
             {
                 return default;
             }
-            
+
         }
         cancellationTokenSource.Dispose();
-        if(pay != null)
+        if (pay != null)
             return CastPaymentToMarshal(pay);
         return default;
     }

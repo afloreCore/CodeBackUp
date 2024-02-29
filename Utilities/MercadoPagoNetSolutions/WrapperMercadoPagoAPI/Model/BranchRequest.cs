@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WrapperMercadoPagoAPI.Enum;
 
 namespace WrapperMercadoPagoAPI.Model;
 public class BranchRequest

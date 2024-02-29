@@ -1,37 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Net;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static System.Reflection.Metadata.BlobBuilder;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace WrapperMercadoPagoAPI.Model;
+﻿namespace WrapperMercadoPagoAPI.Model;
 internal class SucursalStates
 {
     public List<string> States = new()
     {
         "Buenos Aires","Capital Federal","Catamarca","Chaco","Chubut","Corrientes","Córdoba","Entre Ríos","Formosa","Jujuy","La Pampa","La Rioja","Mendoza","Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Santiago del Estero","Tierra del Fuego","Tucumán"
     };
-    public Dictionary<string, List<string>>  Statements = new Dictionary<string, List<string>>
+    public Dictionary<string, List<string>> Statements = new Dictionary<string, List<string>>
     {
         ["Capital Federal"] = new List<string>()
-        { 
+        {
             "Agronomía", "Almagro", "Balvanera", "Barracas", "Barrio Norte", "Belgrano", "Belgrano Barrancas", "Belgrano C", "Belgrano Chico", "Belgrano R", "Boedo", "Botánico",
             "Caballito", "Chacarita", "Coghlan", "Colegiales", "Constitución", "Flores", "Floresta", "La Boca", "Las Cañitas", "Liniers", "Mataderos", "Monserrat", "Monte Castro",
             "Nueva Pompeya", "Núñez", "Palermo", "Palermo Chico", "Palermo Hollywood", "Palermo Nuevo", "Palermo Soho", "Palermo Viejo", "Parque Avellaneda", "Parque Chacabuco",
             "Parque Chas", "Parque Patricios", "Paternal", "Puerto Madero", "Recoleta", "Retiro", "Saavedra", "San Cristóbal", "San Nicolás", "San Telmo", "Santa Rita", "Velez Sarsfield",
             "Versailles", "Villa Crespo", "Villa Devoto", "Villa Gral. Mitre", "Villa Lugano", "Villa Luro", "Villa Ortúzar", "Villa Pueyrredón", "Villa Real", "Villa Riachuelo",
-            "Villa Soldati", "Villa Urquiza", "Villa del Parque" 
+            "Villa Soldati", "Villa Urquiza", "Villa del Parque"
         },
         ["Buenos Aires"] = new List<string>()
         {

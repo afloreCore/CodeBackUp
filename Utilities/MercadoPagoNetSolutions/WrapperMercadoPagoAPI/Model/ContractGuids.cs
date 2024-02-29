@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WrapperMercadoPagoAPI.Model;
+﻿namespace WrapperMercadoPagoAPI.Model;
 internal class ContractGuids
 {
     public const string GuidGrwManagerMP = "C60F7483-636F-4418-8876-FD6ABEC350C2";

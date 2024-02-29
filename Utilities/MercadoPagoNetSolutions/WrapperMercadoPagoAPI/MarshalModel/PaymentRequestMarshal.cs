@@ -1,5 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-using WrapperMercadoPagoAPI.Enum;
 
 namespace WrapperMercadoPagoAPI.MarshalModel;
 [ComVisible(true), Guid("F4F4EEF3-BF6D-4790-98A9-A6FDBDEEAF65"), ClassInterface(ClassInterfaceType.AutoDispatch), ProgId("PaymentRequestMarshal")]

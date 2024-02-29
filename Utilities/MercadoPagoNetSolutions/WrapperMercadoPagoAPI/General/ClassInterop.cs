@@ -1,14 +1,14 @@
-﻿using InterfaceComNetCore;
-using HubConnectionWrapper;
+﻿using HubConnectionWrapper;
+using InterfaceComNetCore;
 using System.Runtime.InteropServices;
 using WrapperMercadoPagoAPI.Interface;
 
 namespace WrapperMercadoPagoAPI.General;
-[ComVisible(true), ClassInterface(ClassInterfaceType.None), Guid("126717A3-6BFA-40F5-A3E8-E81643E8F8A7"), ProgId("WrapperMercadoPagoAPI.ClassInterop")]
+[ComVisible(true), ClassInterface(ClassInterfaceType.None), Guid("175A6CE3-66DB-427A-8498-D665120D4FAA"), ProgId("WrapperMercadoPagoAPI.ClassInterop")]
 public class ClassInterop : IClassInterop
 {
     private WrapperCallback wrapperCallback = null!;
-    public ClassInterop() 
+    public ClassInterop()
     {
     }
     public bool Initialize(string HttpsHost, string queryParameters = "")
@@ -18,18 +18,18 @@ public class ClassInterop : IClassInterop
             wrapperCallback = new WrapperCallback();
             wrapperCallback.CallbackEvent += CallbackEvent;
             return wrapperCallback.StartConnection(HttpsHost, queryParameters);
-        } 
-        catch 
-        {   
-            return false;   
+        }
+        catch
+        {
+            return false;
         }
     }
     public string GetConnectionId(string userId)
     {
-        if(userId == null) { return string.Empty; }
+        if (userId == null) { return string.Empty; }
         try
         {
-            return wrapperCallback.GetConnectionId(userId)?? string.Empty;
+            return wrapperCallback.GetConnectionId(userId) ?? string.Empty;
         }
         catch { return string.Empty; }
     }

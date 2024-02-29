@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace WrapperMercadoPagoAPI.MarshalModel;
 [ComVisible(true), Guid("F392526B-6A2D-4183-8DF1-6BBFF3108718"), ClassInterface(ClassInterfaceType.AutoDispatch), ProgId("WrapperMercadoPagoAPI.SucursalRequestMarshal")]

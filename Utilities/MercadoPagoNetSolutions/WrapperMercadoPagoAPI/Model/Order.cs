@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using WrapperMercadoPagoAPI.General;
 
 namespace WrapperMercadoPagoAPI.Model;
 
 
-public class Order: IDisposable
+public class Order : IDisposable
 {
     private bool _disposed;
     [DefaultValue("")]
@@ -20,7 +19,7 @@ public class Order: IDisposable
     /// Puede estar vacío
     /// </summary>
     public string title { get; set; } = string.Empty;
-    [Required ,DefaultValue(0)]
+    [Required, DefaultValue(0)]
     /// <summary>
     /// Suma de los total_amount de los items + retiro de efectivo
     /// </summary>
@@ -41,7 +40,7 @@ public class Order: IDisposable
     [DefaultValue(null)]
     public CashOut cash_out { get; set; } = null!;
 
-    [DefaultValue(null)]    
+    [DefaultValue(null)]
     public Sponsor sponsor { get; set; } = null!;
 
     public void Dispose()

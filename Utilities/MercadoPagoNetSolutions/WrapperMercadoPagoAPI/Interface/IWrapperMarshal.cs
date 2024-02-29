@@ -1,15 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using InterfaceComNetCore;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using WrapperMercadoPagoAPI.Enum;
 using WrapperMercadoPagoAPI.MarshalModel;
 using WrapperMercadoPagoAPI.Model;
-using WrapperMercadoPagoAPI.Service;
-using InterfaceComNetCore;
 
 namespace WrapperMercadoPagoAPI.Interface;
 [ComVisible(true), InterfaceType(ComInterfaceType.InterfaceIsIDispatch), Guid("10DFB0D7-49D2-4141-A089-6FC5324BA6A0")]
@@ -38,4 +30,4 @@ public interface IWrapperMarshal
     /**********************************************************************************************************************************/
     public string GetStrDateISO8601(DateTime date);
     public DateTime GetDateTimeFromISO8601(string date);
-}   
+}

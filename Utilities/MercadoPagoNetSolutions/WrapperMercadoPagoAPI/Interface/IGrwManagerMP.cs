@@ -1,7 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using WrapperMercadoPagoAPI.Enum;
-using WrapperMercadoPagoAPI.Model;
-using WrapperMercadoPagoAPI.MarshalModel;
+﻿using WrapperMercadoPagoAPI.Model;
 
 namespace WrapperMercadoPagoAPI.Interface;
 //[ComVisible(true), Guid(ContractGuids.GuidIGrwManagerMP), InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]

@@ -160,7 +160,7 @@ Dim result As Boolean
 Dim cnnId As String
 Set oMPCallback = CreateObject("WrapperMercadoPagoAPI.ClassInterop")
 Text1(0).Text = StoreID
-Text1(2).Text = "https://b25f-200-105-93-58.ngrok-free.app"
+Text1(2).Text = "https://7723-200-105-93-58.ngrok-free.app"
 
 End Sub
 
