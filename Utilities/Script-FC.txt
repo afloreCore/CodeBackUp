@@ -1,0 +1,21 @@
+
+
+Dim oRef590732
+Dim oRef400410
+
+Set oRef590732 = ScriptingManager.GetNewObject("FCRMVH",4)
+oRef590732.Tables("FCPPEN01").Rows("1").Fields("VIRT_CIRCOM").Value="0465"
+oRef590732.Tables("FCPPEN01").Rows("1").Fields("VIRT_CIRAPL").Value="0465"
+oRef590732.MoveNext
+Set oRef400410=oRef590732.NextObject
+oRef400410.Tables("FCRMVH").Rows("1").Fields("FCRMVH_NROCTA").Value=""
+oRef400410.Tables("FCRMVH").Rows("1").Fields("FCRMVH_NROCTA").Value="     0"
+oRef400410.Tables("FCRMVH").Rows("1").Fields("FCRMVH_FCHMOV").Value="20210105"
+oRef400410.Tables("FCRMVH").Rows("1").Tables("FCRMVI").Rows("1").Fields("FCRMVI_TIPORI").Value="te"
+oRef400410.Tables("FCRMVH").Rows("1").Tables("FCRMVI").Rows("1").Fields("FCRMVI_ARTORI").Value="0001"
+oRef400410.Tables("FCRMVH").Rows("1").Tables("FCRMVI").Rows("1").Fields("FCRMVI_CANTID").value="1"
+oRef400410.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("3").Fields("CJRMVI_CUOTAS").value="0"
+oRef400410.Tables("FCRMVH").Rows("1").Tables("FCRMVI08").Rows("3").Fields("CJRMVI_CUOTAS").value="1"
+
+
+dotnet ASPNetCoreMPSignalR.dll --urls https://0.0.0.0:7000

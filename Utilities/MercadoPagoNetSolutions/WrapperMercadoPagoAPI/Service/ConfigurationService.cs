@@ -8,15 +8,18 @@ namespace WrapperMercadoPagoAPI.Service;
 public class ConfigurationService : IDisposable
 {
     public static string baseUri => "https://api.mercadopago.com";
-    public readonly string user_Id = ParameterService.UserId; //"1506231285";
-    public readonly long sponsor_id = 136614767;
+    public static long sponsor_id = 136614767;
     //private readonly string token = "TEST-8182650202833324-082815-164cbc5ae5c89f1f86bd1fa2415b0c51-136614767";
-    private readonly string token = ParameterService.Token; //"APP_USR-7467881949049174-101014-8992b07cffadbd3d966b4acb95c328f3-1506231285";
+    private static string _token = string.Empty; //"APP_USR-7467881949049174-101014-8992b07cffadbd3d966b4acb95c328f3-1506231285";
+    private static string _userid = string.Empty;
     private readonly HttpClient oClient;
     private JsonSerializerSettings oJsonSettings;
     private readonly string methodFullName;
     private const string div = "|";
     private bool _disposedValue;
+
+    public string token => _token;
+    public string user_Id => _userid;
     public ConfigurationService()
     {
         oClient = HttpClient();
@@ -26,6 +29,8 @@ public class ConfigurationService : IDisposable
             DefaultValueHandling = DefaultValueHandling.Ignore
         };
         methodFullName = System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType!.FullName!.ToString() ?? string.Empty;
+        _token = ParameterService.Token;
+        _userid = ParameterService.UserId;
     }
     public string FullNameMetod => methodFullName;
     public HttpClient HttpClient()

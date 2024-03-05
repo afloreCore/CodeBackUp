@@ -195,5 +195,19 @@ public static class Utilities
 
         return plaintext;
     }
+    public static bool WriteTextFile(string complextPathFile, string text)
+    {
+        // Append text to an existing file named "WriteLines.txt"
+        using (StreamWriter outputFile = new StreamWriter(complextPathFile, true))
+        {
+            try
+            {
+                outputFile.WriteLine(text);
+                outputFile.Close();
+                return true;
+            }
+            catch { return false; }
+        }
+    }
 }
 

@@ -27,6 +27,10 @@ Private Const FIELD_STORE As String = "CJRMVI_STORID"
 Private Const FIELD_BRANCH As String = "CJRMVI_BRANID"
 Private Const ROUT_CONTROLLER As String = "api/notification"
 Private Const SEPARATOR As String = "|"
+Private Const LIST_SEP As String = "#"
+Private Const VAL_SEP As String = "="
+Private Const TEMP_FILE_MP As String = "TempMPagoLog.log"
+Private m_sTempMPagoLog As String
 Private m_CompanyName As String
 Private m_Sucurs As String
 '
@@ -141,6 +145,7 @@ Private Function ValidatePAGADO(Who As cwTManBZ.ObjectInstance, oRow As cwTManBZ
     Dim topicId As String
     Dim result As Boolean
     Dim notificationUrl As String
+    Dim connectionId As String
     On Error GoTo EH
 
     If oRow.Fields("CJRMVI_PAGADO").Value = "S" Then '#1
@@ -149,42 +154,47 @@ Private Function ValidatePAGADO(Who As cwTManBZ.ObjectInstance, oRow As cwTManBZ
             With oRow
                 Set oInternal = oMPConfig.Item(m_ConfigMP.StoreID)
                 If Not oInternal Is Nothing Then '#3
+                    'Inicializar userIs app y token mpago
+                    InitializeMpMarshal oInternal.UserID, oInternal.TokenAPP, m_sTempMPagoLog
                     'public bool Initialize(string HttpsHost, string queryParameters = "")
                     'queryParameters: Debe ir la clave clientId=(identificador para esta caja). Puede ser en BRANID que es único
-                    result = oMPCallback.Initialize(oInternal.EndPoint & "/" & ROUT_CONTROLLER, "clientId=" & CStr(m_ConfigMP.BranID))
+                    result = oMPCallback.Initialize(oInternal.EndPoint, "clientId=" & CStr(m_ConfigMP.BranID))
                     If result Then '#4
-                        With oInternal
-                            'Set endpoint para el body de la orden, ya que debe enviar el id de la caja para que SignalR lo pueda direccionar a cada cliente
-                            'https://{publicUrl}/api/notification?clientId=xxxxxxx
-                            notificationUrl = oInternal.EndPoint & "/" & ROUT_CONTROLLER & "?clientId=" & CStr(m_ConfigMP.BranID)
-                            Set oBranch = .Branchs.Item(m_ConfigMP.BranID)
-                            TimeOut = IIf(oBranch.TimeOut < TIMEOUT_ORDER, TIMEOUT_ORDER, oBranch.TimeOut)
-                            FchMov = DateAdd("s", TimeOut, Now)
-                            reference = GetKeyExternalRef(oRow, FchMov)
-                            '
-                            ValidatePAGADO = SendOrder(.ExtStoreID, oBranch.external_id, CDbl(oRow.Fields("CJRMVI_IMPORT").Value), oBranch.itemdesc, oBranch.itemunit, FchMov, _
-                            notificationUrl, ExternalReference:=reference)
-                            If ValidatePAGADO <> STOP_IT Then '#5
-                                ValidatePAGADO = ValidateOrder(CInt(TimeOut), reference)
-                                If ValidatePAGADO = STOP_IT Then '#6
-                                    'GR000489      La orden de mercado pago para la caja ~1, no se encuentra generada o ha expirado
-                                    Who.SetError "GR000489", m_ConfigMP.BranID
-                                End If '#6
-                            End If '#5
-                            If ValidatePAGADO <> STOP_IT Then '#7
-                                ValidatePAGADO = ValidatePayment(Who, oBranch.external_id, reference, CDbl(oRow.Fields("CJRMVI_IMPORT").Value), TimeOut, oInternalPay)
-                            End If '#7
-                            If Not (ValidatePAGADO = STOP_IT Or oInternalPay Is Nothing) Then '#8
-                                SetValueaAndReadOnlyPOSFields oRow, oInternalPay, True
-                                'toque aflore para DEMO, luego SACAR
-                                Who.SetWarning "Operation ID: " & oRow.Fields("CJRMVI_CHECOM").Value
-                                '''''''''''''''''''''''''''''''''''
-                            End If '#8
-                           
-                        End With
-                    Else
-                        Who.SetError "GR000068", "Error al inicializar callback"
-                        ValidatePAGADO = STOP_IT
+                        connectionId = oMPCallback.GetConnectionId(m_ConfigMP.BranID)
+                        If Len(Trim(connectionId)) > 0 Then '#4.1
+                            With oInternal
+                                'Set endpoint para el body de la orden, ya que debe enviar el id de la caja para que SignalR lo pueda direccionar a cada cliente
+                                'https://{publicUrl}/api/notification?clientId=xxxxxxx
+                                notificationUrl = oInternal.EndPoint & "/" & ROUT_CONTROLLER & "?clientId=" & CStr(m_ConfigMP.BranID)
+                                Set oBranch = .Branchs.Item(m_ConfigMP.BranID)
+                                TimeOut = IIf(oBranch.TimeOut < TIMEOUT_ORDER, TIMEOUT_ORDER, oBranch.TimeOut)
+                                FchMov = DateAdd("s", TimeOut, Now)
+                                reference = GetKeyExternalRef(oRow, FchMov)
+                                '
+                                ValidatePAGADO = SendOrder(.ExtStoreID, oBranch.external_id, CDbl(oRow.Fields("CJRMVI_IMPORT").Value), oBranch.itemdesc, oBranch.itemunit, FchMov, _
+                                notificationUrl, ExternalReference:=reference)
+'                                If ValidatePAGADO <> STOP_IT Then '#5
+'                                    ValidatePAGADO = ValidateOrder(CInt(TimeOut), reference)
+'                                    If ValidatePAGADO = STOP_IT Then '#6
+'                                        'GR000489      La orden de mercado pago para la caja ~1, no se encuentra generada o ha expirado
+'                                        Who.SetError "GR000489", m_ConfigMP.BranID
+'                                    End If '#6
+'                                End If '#5
+                                If ValidatePAGADO <> STOP_IT Then '#7
+                                    ValidatePAGADO = ValidatePayment(Who, oBranch.external_id, reference, CDbl(oRow.Fields("CJRMVI_IMPORT").Value), TimeOut, oInternalPay)
+                                End If '#7
+                                If Not (ValidatePAGADO = STOP_IT Or oInternalPay Is Nothing) Then '#8
+                                    SetValueaAndReadOnlyPOSFields oRow, oInternalPay, True
+                                    'toque aflore para DEMO, luego SACAR
+                                    Who.SetWarning "Operation ID: " & oRow.Fields("CJRMVI_CHEQUE").Value
+                                    '''''''''''''''''''''''''''''''''''
+                                End If '#8
+                               
+                            End With
+                        Else
+                            Who.SetError "GR000068", "Error al inicializar callback"
+                            ValidatePAGADO = STOP_IT
+                        End If '#4.1
                     End If '#4
                 Else '#3
                     'GR000494      No se encontró la configuración para la tienda ~1 de mercado pago
@@ -306,18 +316,23 @@ On Error GoTo EH
     continue = True
     'Inicializar m_tpTopic para que no quede el topic anterior
     Do While continue And (TimePassed < TimeWait)
-        m_tpTopic.topic = ""
-        m_tpTopic.paymentId = ""
-        'Esperar respuesta desde el servidor de MPago
-        ValidatePayment = WaitForTopicId(payment, TimeWait - TimePassed, topicId)
-        If ValidatePayment <> STOP_IT Then '#1
+        '.Net escribe en el archivo: "topic=topicValue#id=idValue"
+        'Utilities.WriteTextFile(ParameterService.FullPathTmpFile, string.Concat("topic=", topic, "#id=", id))
+        topicId = FindValueFromFile(m_sTempMPagoLog, "payment", "id")
+        If IsNumeric(topicId) Then '#1
             Set oPayment = GetPaymentFromId(topicId)
+            If Not oPayment Is Nothing Then '#2
+                If oPayment.status = InterfaceComNetCore.PaymentStatus_approved Then '#3
+                    continue = False
+                Else
+                    'Set nothing para el if #3, sino analiza el pago rechazado en vano
+                    Set oPayment = Nothing
+                    'Reset archivo log para que tome el nuevo pago, sino lee el anterior payment rechazado
+                    ValidatePayment = TXT_Create(m_sTempMPagoLog)
+                    continue = (ValidatePayment <> STOP_IT)
+                End If '#3
+            End If '#2
         End If '#1
-        If Not oPayment Is Nothing Then '#2
-            If oPayment.PaymentStatus = InterfaceComNetCore.PaymentStatus_approved Then '#3
-                continue = False
-            End If '#3
-        End If '#2
         Sleep 1000
         TimeStop = Timer()
         TimePassed = TimeStop - TimeStart
@@ -478,7 +493,7 @@ Private Sub SetValueaAndReadOnlyPOSFields(oRow As cwTManBZ.Row, oInternalPay As 
         With oInternalPay
             ePaymentType = .PaymentTypeID
             oRow.Fields("CJRMVI_DOCFIR").Value = .PayerID
-            oRow.Fields("CJRMVI_CHECOM").Value = .TransId
+            oRow.Fields("CJRMVI_CHEQUE").Value = .TransId
             oRow.Fields("CJRMVI_AUTPOS").Value = .AthorizationCode
             oRow.Fields("CJRMVI_PAGADO").ReadOnly = ReadOnly
             oRow.Fields("CJRMVI_AUTPOS").ReadOnly = ReadOnly
@@ -523,7 +538,11 @@ Private Function Initialize(Who As cwTManBZ.ObjectInstance) As Integer  '#NOERRO
             End If
         End With
         Initialize = AddConfigMPFromSucurs(Who)
-        Paso = True
+        'Crear archivo de intercambio para .net
+        m_sTempMPagoLog = cwfc.GetLogDirectory & TEMP_FILE_MP
+        Initialize = TXT_Create(m_sTempMPagoLog)
+        '
+        Paso = (Initialize <> STOP_IT)
     End If
 Exit Function
 EH:
@@ -546,9 +565,9 @@ Private Function AddConfigMPFromSucurs(Who As cwTManBZ.ObjectInstance) As Intege
     Set Rs = OPenResultSet(Who, sSql)
     'Add(StoreID As String, StoreName As String, userMP As String, token As String, ExtID As String, FecCre As Date, TimeOut As Double, oBrachs As InternalBranchs) As InternalMPClass
     If Not Rs.EOF Then '#1
-        Set oInternalClass = oMPConfig.Item(StoreID)
         StoreID = SuperVal(Rs("STORID"))
         BranID = SuperVal(Rs("BRANID"))
+        Set oInternalClass = oMPConfig.Item(StoreID)
         'Si no existe el Store, cargar todo deSDE cero
         If oInternalClass Is Nothing Then '#2
             'Cargo todos los datos del branch configurado en GRTSUC
@@ -643,6 +662,9 @@ End Function
 '*************************************************************************************************
 '                                      Llamadas a API Net Core                                   *
 '*************************************************************************************************
+Public Sub InitializeMpMarshal(UserID As String, Token As String, fullPathTmpFile As String)
+    oMPApi.InitializeMpMarshal UserID, Token, fullPathTmpFile
+End Sub
 
 '******************************************Branchs************************************************
 Public Function GetBranchs(StoreID As Long, Optional externalId As String = "", Optional ExtStoreID As String = "", Optional posID As Long = 0) As Variant '#NOERRORHANDLING
@@ -705,10 +727,11 @@ Public Function SendOrder(externalStoreID As String, externalPosID As String, To
     FchMov As Date, notificationUrl As String, Optional cashOut As Double = 0, Optional ExternalReference As String = "", Optional title As String = "", Optional desription As String = "") As Integer '#NOERRORHANDLING
     Dim result As Boolean
     On Error GoTo EH
-    result = CBool(oMPApi.CreateSingleItemOrder(externalStoreID, externalPosID, TotalAmount, itemDescription, itemunit, _
-        FchMov, cashOut, ExternalReference, title, desription))
-    'public bool CreateSingleItemOrder(string externalStoreID, string externalPosID, double totalAmount, string itemDescription, string itemUnit,
-    'DateTime expidateDateTime, double cashOut = 0, string externalReference = "", string title = "", string desription = "");
+    ' bool IWrapperMarshal.CreateSingleItemOrder(string externalStoreID, string externalPosID, double totalAmount, string itemDescription, string itemUnit, DateTime expidateDateTime,
+    '   string notificationUrl, double cashOut, string externalReference, string title, string desription)
+    result = CBool(oMPApi.CreateSingleItemOrder(externalStoreID, externalPosID, TotalAmount, itemDescription, itemunit, FchMov, _
+    notificationUrl, cashOut, ExternalReference, title, desription))
+    
     SendOrder = IIf(Not result, STOP_IT, GO_ON)
 Exit Function
 EH:
@@ -818,7 +841,11 @@ Private Function WaitForTopicId(topic As eTopic, TimeOut As Integer, ByRef topic
     Do While (TimePassed < TimeWait) And continue
         If topic = m_tpTopic.topic Then
             continue = False
-            topicId = m_tpTopic.topic
+            If topic = order Then
+                topicId = m_tpTopic.orderId
+            ElseIf topic = payment Then
+                topicId = m_tpTopic.paymentId
+            End If
         End If
         Sleep 1000
         TimeStop = Timer()
@@ -830,7 +857,74 @@ Exit Function
 EH:
     WaitForTopicId = STOP_IT
 End Function
+Private Function FindValueFromFile(fullPath As String, keyTopic As String, keyValue As String) As String '#NOERRORHANDLING
+    Dim resultValue As String
+    Dim textLine As String
+    Dim seguir As Boolean
+    Dim fileIndex As Integer
+    On Error GoTo EH
+    fileIndex = FreeFile
+    Open fullPath For Input As #fileIndex
+    seguir = True
+    Do While Not EOF(fileIndex) And seguir
+        Line Input #fileIndex, textLine$  ' Read line into variable
+        If InStr(textLine, keyTopic) > 0 Then
+            FindValueFromFile = GetKeyValues(keyValue, textLine, LIST_SEP, VAL_SEP)
+            seguir = False
+        End If
+    Loop
 
+  Close #fileIndex
+  Exit Function
+EH:
+    On Error Resume Next
+    Close #fileIndex
+End Function
+Private Function TXT_Create(fullPath As String) As Integer '#NOERRORHANDLING
+    On Error GoTo TXT_CreateErrHandler
+    Dim oFso As Scripting.FileSystemObject
+    Dim oTxtStream As Scripting.TextStream
+    Set oFso = CreateObject("Scripting.FileSystemObject")
+    Set oTxtStream = oFso.OpenTextFile(fullPath, ForWriting, True)
+    oTxtStream.Close
+    '
+    Set oTxtStream = Nothing
+    Set oFso = Nothing
+    
+    Exit Function
+TXT_CreateErrHandler:
+    On Error Resume Next
+    oTxtStream.Close
+    Set oTxtStream = Nothing
+    Set oFso = Nothing
+    TXT_Create = STOP_IT
+    TraceAndRaiseError Err.Number, Err.Description, Err.Source, Erl, App.EXEName, "Globals.bas", "Public Function TXT_Create"
+
+End Function
+
+Private Function GetKeyValues(ByVal keyName As String, ByVal sKeyNames As String, listSep As String, valueSep As String) As String  '#NOERRORHANDLING
+    Dim sFields As String, eachField As String
+    Dim sKeyValues As String
+    Dim index As Long
+    Dim bSeguir As Boolean
+    On Error GoTo EH
+    sKeyValues = ""
+    bSeguir = True
+    Do While Len(sKeyNames) And bSeguir
+        sKeyNames = Left(Mid(sKeyNames, InStr(sKeyNames, keyName)), InStr(sKeyNames, listSep))
+        eachField = Left(sKeyNames, InStr(sKeyNames, valueSep) - 1)
+        If eachField = keyName Then
+            sKeyValues = Mid(sKeyNames, InStr(sKeyNames, valueSep) + 1)
+            bSeguir = False
+        End If
+    Loop
+ 
+    GetKeyValues = sKeyValues
+ 
+    Exit Function
+EH:
+
+End Function
 
 Private Sub Class_Initialize()
     Set oMPConfig = New InternalMPConfig
@@ -854,13 +948,15 @@ Private Sub Class_Terminate()
     Set oIndexConcepto = Nothing
 End Sub
 
-Private Function ICallbackInterop_ReturnValue(ByVal topic As String, ByVal topicId As String) As Boolean
-    If topic = "payment" Then
+
+Private Sub ICallbackInterop_ReturnValue(ByVal topic As String, ByVal topicId As String)
+      m_tpTopic.topic = None
+     If topic = "payment" Then
         m_tpTopic.paymentId = topicId
         m_tpTopic.topic = payment
     ElseIf topic = "merchant_order" Then
         m_tpTopic.orderId = topicId
         m_tpTopic.topic = order
     End If
-    ICallbackInterop_ReturnValue = True
-End Function
+    DoEvents
+End Sub

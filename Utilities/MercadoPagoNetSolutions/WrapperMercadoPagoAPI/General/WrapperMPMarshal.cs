@@ -12,6 +12,12 @@ public class WrapperMPMarshal : IWrapperMarshal
 {
 
     public WrapperMPMarshal() { }
+    public void InitializeMpMarshal(string userId, string token, string fullPathTmpFile)
+    {
+        ParameterService.UserId = userId;
+        ParameterService.Token = token;
+        ParameterService.FullPathTmpFile = fullPathTmpFile;
+    }
     public ICallbackInterop ReturnValue { get; set; } = null!;
     #region Operaciones con Sucursales/Stores
     SucursalRequestMarshal? IWrapperMarshal.GetSucursalFromName(string name)
@@ -365,7 +371,7 @@ public class WrapperMPMarshal : IWrapperMarshal
             description = order.description,
             expiration_date = order.expiration_date,
             external_reference = order.external_reference,
-            items = order.items.Cast<ItemOrderMarshal>().ToArray(),
+            items = order.items.Cast<object>().ToArray(),
             total_amount = order.total_amount,
             title = order.title,
             sponsor = (order!.sponsor != null ? order.sponsor.id.ToString() : "")

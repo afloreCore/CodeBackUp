@@ -29,12 +29,7 @@
     <ProjectReference Include="..\HubConnectionWrapper\HubConnectionWrapper.csproj">
       <PrivateAssets>Yes</PrivateAssets>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="InterfaceComNetCore">
-      <HintPath>..\InterfaceComNetCore\bin\x86\Debug\InterfaceComNetCore.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <ProjectReference Include="..\InterfaceComNetCore\InterfaceComNetCore.csproj" />
   </ItemGroup>
 
 </Project>

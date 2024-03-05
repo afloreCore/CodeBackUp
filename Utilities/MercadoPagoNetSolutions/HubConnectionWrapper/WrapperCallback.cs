@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
 using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-
 
 namespace HubConnectionWrapper
 {
@@ -55,7 +52,6 @@ namespace HubConnectionWrapper
             {
                 return false;
             }
-
         }
         private bool ReturnCallback(string topic, string id)
         {

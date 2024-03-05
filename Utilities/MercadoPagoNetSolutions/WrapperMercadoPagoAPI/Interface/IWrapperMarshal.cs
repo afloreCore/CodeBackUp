@@ -7,6 +7,7 @@ namespace WrapperMercadoPagoAPI.Interface;
 [ComVisible(true), InterfaceType(ComInterfaceType.InterfaceIsIDispatch), Guid("10DFB0D7-49D2-4141-A089-6FC5324BA6A0")]
 public interface IWrapperMarshal
 {
+    void InitializeMpMarshal(string userId, string token, string fullPathTmpFile);
     public ICallbackInterop ReturnValue { get; set; }
     public SucursalRequestMarshal? GetSucursalFromName(string name);
     public SucursalRequestMarshal? GetSucursalFromId(long sucId);

@@ -1,16 +1,17 @@
 ﻿using HubConnectionWrapper;
 using InterfaceComNetCore;
 using System.Runtime.InteropServices;
+using System.Text;
 using WrapperMercadoPagoAPI.Interface;
+using WrapperMercadoPagoAPI.Service;
 
 namespace WrapperMercadoPagoAPI.General;
 [ComVisible(true), ClassInterface(ClassInterfaceType.None), Guid("175A6CE3-66DB-427A-8498-D665120D4FAA"), ProgId("WrapperMercadoPagoAPI.ClassInterop")]
 public class ClassInterop : IClassInterop
 {
     private WrapperCallback wrapperCallback = null!;
-    public ClassInterop()
-    {
-    }
+
+    public ClassInterop(){ }
     public bool Initialize(string HttpsHost, string queryParameters = "")
     {
         try
@@ -36,11 +37,6 @@ public class ClassInterop : IClassInterop
     public ICallbackInterop ReturnValue { get; set; } = null!;
     private bool CallbackEvent(string topic, string id)
     {
-        try
-        {
-            var result = ReturnValue?.ReturnValue(topic, id);
-            return result ?? false;
-        }
-        catch { return false; }
+        return long.TryParse(id, out _) ? Utilities.WriteTextFile(ParameterService.FullPathTmpFile, string.Concat("topic=", topic, "#id=", id)) : false;
     }
 }
