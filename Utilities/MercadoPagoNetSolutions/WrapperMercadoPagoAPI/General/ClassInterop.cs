@@ -10,12 +10,16 @@ namespace WrapperMercadoPagoAPI.General;
 public class ClassInterop : IClassInterop
 {
     private WrapperCallback wrapperCallback = null!;
-
-    public ClassInterop(){ }
-    public bool Initialize(string HttpsHost, string queryParameters = "")
-    {
+    private static string fileSep = string.Empty;
+    private static string listSep = string.Empty;
+    private static string valueSep = string.Empty;
+     
+    public ClassInterop(){ } 
+    public bool Initialize(string HttpsHost, string fileSeparation, string listSeparation, string valueSeparation, string queryParameters = "")
+    { 
         try
         {
+            (fileSep, listSep, valueSep) = (fileSeparation, listSeparation, valueSeparation);
             wrapperCallback = new WrapperCallback();
             wrapperCallback.CallbackEvent += CallbackEvent;
             return wrapperCallback.StartConnection(HttpsHost, queryParameters);

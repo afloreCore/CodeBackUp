@@ -13,7 +13,7 @@ Attribute VB_Exposed = True
 '27/10/2023|AFLORE|AFLORE-46|Integración con mercado pago
 Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 Option Explicit
-Implements ICallbackInterop
+
 Private oMPApi As Object
 Private oMPCallback As Object
 Private oGrwCompany As GRWMultiCompany.Utilities
@@ -158,7 +158,8 @@ Private Function ValidatePAGADO(Who As cwTManBZ.ObjectInstance, oRow As cwTManBZ
                     InitializeMpMarshal oInternal.UserID, oInternal.TokenAPP, m_sTempMPagoLog
                     'public bool Initialize(string HttpsHost, string queryParameters = "")
                     'queryParameters: Debe ir la clave clientId=(identificador para esta caja). Puede ser en BRANID que es único
-                    result = oMPCallback.Initialize(oInternal.EndPoint, "clientId=" & CStr(m_ConfigMP.BranID))
+                    'public bool Initialize(string HttpsHost, string fileSeparation, string listSeparation, string valueSeparation, string queryParameters = "")
+                    result = oMPCallback.Initialize(oInternal.EndPoint, SEPARATOR, LIST_SEP, VAL_SEP, "clientId=" & CStr(m_ConfigMP.BranID))
                     If result Then '#4
                         connectionId = oMPCallback.GetConnectionId(m_ConfigMP.BranID)
                         If Len(Trim(connectionId)) > 0 Then '#4.1
@@ -327,9 +328,6 @@ On Error GoTo EH
                 Else
                     'Set nothing para el if #3, sino analiza el pago rechazado en vano
                     Set oPayment = Nothing
-                    'Reset archivo log para que tome el nuevo pago, sino lee el anterior payment rechazado
-                    ValidatePayment = TXT_Create(m_sTempMPagoLog)
-                    continue = (ValidatePayment <> STOP_IT)
                 End If '#3
             End If '#2
         End If '#1
@@ -858,27 +856,32 @@ EH:
     WaitForTopicId = STOP_IT
 End Function
 Private Function FindValueFromFile(fullPath As String, keyTopic As String, keyValue As String) As String '#NOERRORHANDLING
-    Dim resultValue As String
     Dim textLine As String
-    Dim seguir As Boolean
-    Dim fileIndex As Integer
     On Error GoTo EH
-    fileIndex = FreeFile
-    Open fullPath For Input As #fileIndex
-    seguir = True
-    Do While Not EOF(fileIndex) And seguir
-        Line Input #fileIndex, textLine$  ' Read line into variable
-        If InStr(textLine, keyTopic) > 0 Then
-            FindValueFromFile = GetKeyValues(keyValue, textLine, LIST_SEP, VAL_SEP)
-            seguir = False
-        End If
-    Loop
 
-  Close #fileIndex
+    If ReadEntireTextFile(fullPath, textLine) <> STOP_IT Then
+        If InStr(textLine, keyTopic) > 0 Then
+            'FindValueFromFile = GetKeyValues(keyValue, textLine, LIST_SEP, VAL_SEP)
+            FindValueFromFile = GetTopicId(keyValue, keyTopic, textLine, FILE_SEP, LIST_SEP, VAL_SEP)
+        End If
+    End If
+    
   Exit Function
 EH:
     On Error Resume Next
-    Close #fileIndex
+End Function
+Private Function ReadEntireTextFile(fullPathFile As String, ByRef textFile As String) As Integer
+    On Error GoTo EH
+    Dim iFile As Integer
+    iFile = FreeFile
+    Open fullPathFile For Input As #iFile
+    textFile = StrConv(InputB(LOF(iFile), iFile), vbUnicode)
+    Close #iFile
+Exit Function
+EH:
+    ReadEntireTextFile = STOP_IT
+    On Error Resume Next
+    Close #iFile
 End Function
 Private Function TXT_Create(fullPath As String) As Integer '#NOERRORHANDLING
     On Error GoTo TXT_CreateErrHandler
@@ -901,29 +904,72 @@ TXT_CreateErrHandler:
     TraceAndRaiseError Err.Number, Err.Description, Err.Source, Erl, App.EXEName, "Globals.bas", "Public Function TXT_Create"
 
 End Function
+Private Function CopyFile(sourceFilePath As String, destinationFilePath As String) As Integer '#NOERRORHANDLING
+ On Error GoTo EH
+    FileCopy sourceFilePath, destinationFilePath
+ Exit Function
+EH:
+    CopyFile = STOP_IT
+End Function
 
-Private Function GetKeyValues(ByVal keyName As String, ByVal sKeyNames As String, listSep As String, valueSep As String) As String  '#NOERRORHANDLING
-    Dim sFields As String, eachField As String
-    Dim sKeyValues As String
-    Dim index As Long
+Private Function GetTopicId(ByVal topic As String, ByVal keyName As String, ByVal sKeyNames As String, lineSep As String, listSep As String, valueSep As String) As String '#NOERRORHANDLING
+    Dim keyValue As String
+    Dim eachField As String
+    Dim topicId As Currency
+    Dim topicMaxId As Currency
     Dim bSeguir As Boolean
+    Dim vec() As Variant
+    Dim varItem As Variant
     On Error GoTo EH
-    sKeyValues = ""
-    bSeguir = True
-    Do While Len(sKeyNames) And bSeguir
-        sKeyNames = Left(Mid(sKeyNames, InStr(sKeyNames, keyName)), InStr(sKeyNames, listSep))
-        eachField = Left(sKeyNames, InStr(sKeyNames, valueSep) - 1)
-        If eachField = keyName Then
-            sKeyValues = Mid(sKeyNames, InStr(sKeyNames, valueSep) + 1)
-            bSeguir = False
+  
+    Split sKeyNames, lineSep, vec
+    For Each varItem In vec()
+        If InStr(varItem, topic) > 0 Then
+            sKeyNames = Left(Mid(varItem, InStr(varItem, keyName)), InStr(varItem, listSep))
+            eachField = Left(sKeyNames, InStr(sKeyNames, valueSep) - 1)
+            If eachField = keyName Then '#1
+                keyValue = Mid(sKeyNames, InStr(sKeyNames, valueSep) + 1)
+                If IsNumeric(keyValue) Then '#2
+                    topicId = CCur(keyValue)
+                    If topicId > topicMaxId Then '#3
+                        topicMaxId = topicId
+                    End If '#3
+                End If '#2
+            End If '#1
         End If
-    Loop
- 
-    GetKeyValues = sKeyValues
+    Next
+    GetTopicId = CStr(topicMaxId)
  
     Exit Function
 EH:
 
+End Function
+Private Function Split(ByVal sText As String, sSplitChar As String, ByRef vec() As Variant)
+ 
+    On Error GoTo EH
+    Dim iPos As Integer
+    Dim x As Integer
+    Dim i As Integer
+    Dim iMaxLenArray As Integer
+ 
+    If Len(sSplitChar) > 0 Then
+        Do
+            i = i + 1
+            iPos = InStr(1, sText, sSplitChar)
+            If iPos > 0 Then
+                ReDim Preserve vec(x)
+                vec(x) = Mid(sText, 1, iPos - 1)
+                sText = Mid(sText, iPos + 1, Len(sText) - 1)
+                x = x + 1
+            End If
+        Loop Until (Len(sText) = 0 Or iPos = 0)
+         
+    End If
+
+Exit Function
+ 
+EH:
+ 
 End Function
 
 Private Sub Class_Initialize()
@@ -936,7 +982,6 @@ Private Sub Class_Initialize()
     Set oMPApi = CreateObject("WrapperMercadoPagoAPI.WrapperMPMarshal")
     Set oMPCallback = CreateObject("WrapperMercadoPagoAPI.ClassInterop")
     'Asigno Me para inicializar el callback
-    Set oMPCallback.ReturnValue = Me
 End Sub
 
 Private Sub Class_Terminate()
@@ -948,15 +993,15 @@ Private Sub Class_Terminate()
     Set oIndexConcepto = Nothing
 End Sub
 
-
-Private Sub ICallbackInterop_ReturnValue(ByVal topic As String, ByVal topicId As String)
-      m_tpTopic.topic = None
-     If topic = "payment" Then
-        m_tpTopic.paymentId = topicId
-        m_tpTopic.topic = payment
-    ElseIf topic = "merchant_order" Then
-        m_tpTopic.orderId = topicId
-        m_tpTopic.topic = order
-    End If
-    DoEvents
-End Sub
+'
+'Private Sub ICallbackInterop_ReturnValue(ByVal topic As String, ByVal topicId As String)
+'      m_tpTopic.topic = None
+'     If topic = "payment" Then
+'        m_tpTopic.paymentId = topicId
+'        m_tpTopic.topic = payment
+'    ElseIf topic = "merchant_order" Then
+'        m_tpTopic.orderId = topicId
+'        m_tpTopic.topic = order
+'    End If
+'    DoEvents
+'End Sub

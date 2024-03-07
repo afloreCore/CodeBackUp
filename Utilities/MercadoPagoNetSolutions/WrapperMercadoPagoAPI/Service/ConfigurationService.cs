@@ -22,6 +22,10 @@ public class ConfigurationService : IDisposable
     public string user_Id => _userid;
     public ConfigurationService()
     {
+        //esto primero porque sino el HttpClient se instancia sin el token. ParameterService se carga en WrapperMarshal
+        _token = ParameterService.Token;
+        _userid = ParameterService.UserId;
+        //
         oClient = HttpClient();
         oJsonSettings = new JsonSerializerSettings()
         {
@@ -29,8 +33,6 @@ public class ConfigurationService : IDisposable
             DefaultValueHandling = DefaultValueHandling.Ignore
         };
         methodFullName = System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType!.FullName!.ToString() ?? string.Empty;
-        _token = ParameterService.Token;
-        _userid = ParameterService.UserId;
     }
     public string FullNameMetod => methodFullName;
     public HttpClient HttpClient()

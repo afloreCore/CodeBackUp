@@ -128,7 +128,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Implements ICallbackInterop
+
 Private oMPCallback As Object
 Const StoreID As String = "PDV0001"
 
@@ -140,7 +140,7 @@ Private Sub Command1_Click()
             cnnId = oMPCallback.GetConnectionId(Text1(0).Text)
             Text1(1).Text = cnnId
         End If
-        Set oMPCallback.ReturnValue = Me
+    
     End If
 End Sub
 
@@ -161,13 +161,110 @@ Dim cnnId As String
 Set oMPCallback = CreateObject("WrapperMercadoPagoAPI.ClassInterop")
 Text1(0).Text = StoreID
 Text1(2).Text = "https://7723-200-105-93-58.ngrok-free.app"
+cnnId = FindValueFromFile("C:\ProgramData\Softland\Logs\Log_202403\TempMPagoLog.log", "merchant_order", "id")
+
 
 End Sub
+Private Function GetTopicId(ByVal topic As String, ByVal keyName As String, ByVal sKeyNames As String, listSep As String, valueSep As String) As String '#NOERRORHANDLING
+    Dim keyValue As String
+    Dim topicId As Currency
+    Dim topicMaxId As Currency
+    Dim bSeguir As Boolean
+    Dim vec() As Variant
+    Dim varItem As Variant
+    On Error GoTo EH
+    sKeyValues = ""
+    bSeguir = True
+    Split sKeyNames, "|", 255, vec
+    For Each varItem In vec()
+        If InStr(varItem, topic) > 0 Then
+            sKeyNames = Left(Mid(varItem, InStr(varItem, keyName)), InStr(varItem, listSep))
+            eachField = Left(sKeyNames, InStr(sKeyNames, valueSep) - 1)
+            If eachField = keyName Then '#1
+                keyValue = Mid(sKeyNames, InStr(sKeyNames, valueSep) + 1)
+                If IsNumeric(keyValue) Then '#2
+                    topicId = CCur(keyValue)
+                    If topicId > topicMaxId Then '#3
+                        topicMaxId = topicId
+                    End If '#3
+                End If '#2
+            End If '#1
+        End If
+    Next
+'    Do While Len(sKeyNames) And bSeguir
+'        sKeyNames = Left(Mid(sKeyNames, InStr(sKeyNames, keyName)), InStr(sKeyNames, listSep))
+'        eachField = Left(sKeyNames, InStr(sKeyNames, valueSep) - 1)
+'        If eachField = keyName Then
+'            sKeyValues = Mid(sKeyNames, InStr(sKeyNames, valueSep) + 1)
+'            bSeguir = False
+'        End If
+'    Loop
+'
+    GetKeyValues = CStr(topicMaxId)
+ 
+    Exit Function
+EH:
+
+End Function
+
 
 Private Sub Form_Unload(Cancel As Integer)
     Set oMPCallback = Nothing
 End Sub
+Private Function FindValueFromFile(fullPath As String, keyTopic As String, keyValue As String) As String '#NOERRORHANDLING
+    Dim textLine As String
+    On Error GoTo EH
+    
 
-Private Function ICallbackInterop_ReturnValue(ByVal topic As String, ByVal topicId As String) As Boolean
-    Text2.Text = Text2.Text & "topic: " & topic & "; Id: " & topicId & vbCrLf
+    If ReadEntireTextFile(fullPath, textLine) <> 1 Then
+        If InStr(textLine, keyTopic) > 0 Then
+            'FindValueFromFile = GetKeyValues(keyValue, textLine, LIST_SEP, VAL_SEP)
+            FindValueFromFile = GetTopicId("merchant_order", keyValue, textLine, "#", "=")
+        End If
+    End If
+    
+  Exit Function
+EH:
+    On Error Resume Next
+End Function
+Private Function ReadEntireTextFile(fullPathFile As String, ByRef textFile As String) As Integer
+    On Error GoTo EH
+    Dim iFile As Integer
+    iFile = FreeFile
+    Open fullPathFile For Input As #iFile
+    textFile = StrConv(InputB(LOF(iFile), iFile), vbUnicode)
+    Close #iFile
+Exit Function
+EH:
+    ReadEntireTextFile = STOP_IT
+    On Error Resume Next
+    Close #iFile
+End Function
+Private Function Split(ByVal sText As String, sSplitChar As String, iMaxLen As Integer, ByRef vec() As Variant)
+ 
+    On Error GoTo EH
+    Dim iPos As Integer
+    Dim x As Integer
+    Dim i As Integer
+    Dim iMaxLenArray As Integer
+ 
+ 
+        If Len(sSplitChar) > 0 Then
+            Do
+                i = i + 1
+                iPos = InStr(1, sText, sSplitChar)
+                If iPos > 0 Then
+                    ReDim Preserve vec(x)
+                    vec(x) = Mid(sText, 1, iPos - 1)
+                    sText = Mid(sText, iPos + 1, Len(sText) - 1)
+                    x = x + 1
+                End If
+            Loop Until (Len(sText) = 0 Or iPos = 0)
+             
+        End If
+
+Exit Function
+ 
+EH:
+ 
 End Function
