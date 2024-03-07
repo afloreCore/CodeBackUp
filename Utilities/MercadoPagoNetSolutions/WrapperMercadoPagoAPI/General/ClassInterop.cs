@@ -41,6 +41,7 @@ public class ClassInterop : IClassInterop
     public ICallbackInterop ReturnValue { get; set; } = null!;
     private bool CallbackEvent(string topic, string id)
     {
-        return long.TryParse(id, out _) ? Utilities.WriteTextFile(ParameterService.FullPathTmpFile, string.Concat("topic=", topic, "#id=", id)) : false;
+        return long.TryParse(id, out _) ? Utilities.WriteTextFile(ParameterService.FullPathTmpFile, 
+            string.Concat("topic", valueSep, topic, listSep, "id", valueSep, id, fileSep)) : false;
     }
 }

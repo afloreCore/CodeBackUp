@@ -163,35 +163,41 @@ Private Function ValidatePAGADO(Who As cwTManBZ.ObjectInstance, oRow As cwTManBZ
                     If result Then '#4
                         connectionId = oMPCallback.GetConnectionId(m_ConfigMP.BranID)
                         If Len(Trim(connectionId)) > 0 Then '#4.1
-                            With oInternal
-                                'Set endpoint para el body de la orden, ya que debe enviar el id de la caja para que SignalR lo pueda direccionar a cada cliente
-                                'https://{publicUrl}/api/notification?clientId=xxxxxxx
-                                notificationUrl = oInternal.EndPoint & "/" & ROUT_CONTROLLER & "?clientId=" & CStr(m_ConfigMP.BranID)
-                                Set oBranch = .Branchs.Item(m_ConfigMP.BranID)
-                                TimeOut = IIf(oBranch.TimeOut < TIMEOUT_ORDER, TIMEOUT_ORDER, oBranch.TimeOut)
-                                FchMov = DateAdd("s", TimeOut, Now)
-                                reference = GetKeyExternalRef(oRow, FchMov)
-                                '
-                                ValidatePAGADO = SendOrder(.ExtStoreID, oBranch.external_id, CDbl(oRow.Fields("CJRMVI_IMPORT").Value), oBranch.itemdesc, oBranch.itemunit, FchMov, _
-                                notificationUrl, ExternalReference:=reference)
-'                                If ValidatePAGADO <> STOP_IT Then '#5
-'                                    ValidatePAGADO = ValidateOrder(CInt(TimeOut), reference)
-'                                    If ValidatePAGADO = STOP_IT Then '#6
-'                                        'GR000489      La orden de mercado pago para la caja ~1, no se encuentra generada o ha expirado
-'                                        Who.SetError "GR000489", m_ConfigMP.BranID
-'                                    End If '#6
-'                                End If '#5
-                                If ValidatePAGADO <> STOP_IT Then '#7
-                                    ValidatePAGADO = ValidatePayment(Who, oBranch.external_id, reference, CDbl(oRow.Fields("CJRMVI_IMPORT").Value), TimeOut, oInternalPay)
-                                End If '#7
-                                If Not (ValidatePAGADO = STOP_IT Or oInternalPay Is Nothing) Then '#8
-                                    SetValueaAndReadOnlyPOSFields oRow, oInternalPay, True
-                                    'toque aflore para DEMO, luego SACAR
-                                    Who.SetWarning "Operation ID: " & oRow.Fields("CJRMVI_CHEQUE").Value
-                                    '''''''''''''''''''''''''''''''''''
-                                End If '#8
-                               
-                            End With
+                            'Inicializar archivo auxiliar de intercambio
+                            ValidatePAGADO = TXT_Create(m_sTempMPagoLog)
+                            If ValidatePAGADO <> STOP_IT Then '#4.2
+                               With oInternal
+                                    'Set endpoint para el body de la orden, ya que debe enviar el id de la caja para que SignalR lo pueda direccionar a cada cliente
+                                    'https://{publicUrl}/api/notification?clientId=xxxxxxx
+                                    notificationUrl = oInternal.EndPoint & "/" & ROUT_CONTROLLER & "?clientId=" & CStr(m_ConfigMP.BranID)
+                                    Set oBranch = .Branchs.Item(m_ConfigMP.BranID)
+                                    TimeOut = IIf(oBranch.TimeOut < TIMEOUT_ORDER, TIMEOUT_ORDER, oBranch.TimeOut)
+                                    FchMov = DateAdd("s", TimeOut, Now)
+                                    reference = GetKeyExternalRef(oRow, FchMov)
+                                    'Inicializar archivo auxiliar de intercambio
+                                    TXT_Create (m_sTempMPagoLog)
+                                    ValidatePAGADO = SendOrder(.ExtStoreID, oBranch.external_id, CDbl(oRow.Fields("CJRMVI_IMPORT").Value), oBranch.itemdesc, oBranch.itemunit, FchMov, _
+                                    notificationUrl, ExternalReference:=reference)
+    '                                If ValidatePAGADO <> STOP_IT Then '#5
+    '                                    ValidatePAGADO = ValidateOrder(CInt(TimeOut), reference)
+    '                                    If ValidatePAGADO = STOP_IT Then '#6
+    '                                        'GR000489      La orden de mercado pago para la caja ~1, no se encuentra generada o ha expirado
+    '                                        Who.SetError "GR000489", m_ConfigMP.BranID
+    '                                    End If '#6
+    '                                End If '#5
+                                    If ValidatePAGADO <> STOP_IT Then '#7
+                                        ValidatePAGADO = ValidatePayment(Who, oBranch.external_id, reference, CDbl(oRow.Fields("CJRMVI_IMPORT").Value), TimeOut, oInternalPay)
+                                    End If '#7
+                                    If Not (ValidatePAGADO = STOP_IT Or oInternalPay Is Nothing) Then '#8
+                                        SetValueaAndReadOnlyPOSFields oRow, oInternalPay, True
+                                        'toque aflore para DEMO, luego SACAR
+                                        Who.SetWarning "Operation ID: " & oRow.Fields("CJRMVI_CHEQUE").Value
+                                        '''''''''''''''''''''''''''''''''''
+                                    End If '#8
+                                End With
+                            Else '#4.2
+                                Who.SetError "GR000068", "Error al inicializar archivo log de intercambio"
+                            End If '#4.2
                         Else
                             Who.SetError "GR000068", "Error al inicializar callback"
                             ValidatePAGADO = STOP_IT
@@ -861,8 +867,8 @@ Private Function FindValueFromFile(fullPath As String, keyTopic As String, keyVa
 
     If ReadEntireTextFile(fullPath, textLine) <> STOP_IT Then
         If InStr(textLine, keyTopic) > 0 Then
-            'FindValueFromFile = GetKeyValues(keyValue, textLine, LIST_SEP, VAL_SEP)
-            FindValueFromFile = GetTopicId(keyValue, keyTopic, textLine, FILE_SEP, LIST_SEP, VAL_SEP)
+            'GetTopicId(ByVal topic As String, ByVal keyName As String, ByVal sKeyNames As String, lineSep As String, listSep As String, valueSep As String) As String
+            FindValueFromFile = GetTopicId(keyTopic, keyValue, textLine, SEPARATOR, LIST_SEP, VAL_SEP)
         End If
     End If
     

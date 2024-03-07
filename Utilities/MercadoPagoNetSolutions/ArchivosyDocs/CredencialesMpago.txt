@@ -10,8 +10,10 @@ Número de aplicación:
 Token
 APP_USR-211071455108264-101012-101ad9024c8b2e4d49b1aa05c0b17b02-136614767
 
-Cuentas de Prueba Comprador:
-Softland Developer: TESTUSER1571297263, pw:RA6CRXqUvv
+Cuentas de Prueba:
+Softland Comprador: TESTUSER1571297263, pw:RA6CRXqUvv
+Comprador 2: TESTUSER771057581, 23AC92CB#3dac#43a9#
+
 '/********************************************************************************************/
 '											Vendedor: 
 '/********************************************************************************************/

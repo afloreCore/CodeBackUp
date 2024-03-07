@@ -39,4 +39,5 @@ oRef3351870.MoveNext
 oRef3351870.Tables("FC_TPEN_GRP").Rows("6").Fields("CWA_INT_SEL").Value="S"
 oRef3351870.Finish
 Set oRef8524906=oRef3351870.NextObject
-'oRef8524906.Tables("FCRMVH").Rows("1").Tables("FCRMVI09").Rows("7").Fields("CJRMVI_PAGADO").Value="S"
+oRef8524906.Tables("FCRMVH").Rows("1").Tables("FCRMVI09").Rows("3").Fields("CJRMVI_PAGADO").Value="S"
+oRef8524906.Tables("FCRMVH").Rows("1").Tables("FCRMVI09").Rows("5").Fields("CJRMVI_PAGADO").Value="S"
